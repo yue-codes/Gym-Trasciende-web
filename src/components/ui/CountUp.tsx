@@ -18,5 +18,5 @@ export const CountUp = ({
     setCount(final);
   }, [final, setCount]);
 
-  return <span>{count}</span>;
+  return <span aria-live="polite">{count}</span>;
 };

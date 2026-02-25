@@ -69,6 +69,7 @@ export default function PricingSelector({
                   <button
                     key={area.id}
                     onClick={() => setSelectedArea(area.id)}
+                    aria-pressed={selectedArea === area.id}
                     className={`group relative overflow-hidden rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-500 md:px-6 md:py-3 md:text-base ${
                       selectedArea === area.id
                         ? "bg-primary shadow-primary/50 scale-105 text-gray-900 shadow-lg"

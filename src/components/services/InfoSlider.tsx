@@ -75,16 +75,14 @@ export default function InfoSlider({
     setTouchEnd(0);
   };
 
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
+  // Keyboard navigation (scoped to the slider container via onKeyDown)
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") prevSlide();
       if (e.key === "ArrowRight") nextSlide();
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [nextSlide, prevSlide]);
+    },
+    [prevSlide, nextSlide],
+  );
 
   // Auto-play
   useEffect(() => {
@@ -107,7 +105,12 @@ export default function InfoSlider({
   }, []);
 
   return (
-    <div class="relative mx-auto w-full max-w-6xl">
+    <div
+      class="relative mx-auto w-full max-w-6xl"
+      tabIndex={0}
+      onKeyDown={(e) => handleKeyDown(e as any)}
+      aria-label="Slider de información"
+    >
       {/* Slider Container */}
       <div
         class="relative overflow-hidden rounded-2xl border border-zinc-800/50 bg-zinc-900/50 backdrop-blur-sm"

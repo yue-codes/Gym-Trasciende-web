@@ -51,6 +51,30 @@ const mobileNavItems = [
 
 const whatsappUrl =
   "https://wa.me/529516117406?text=Hola%20Yanely%2C%20me%20interesa%20agendar%20una%20asesor%C3%ADa%20nutricional";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Asesoría Nutricional con Yanely García",
+  description:
+    "Asesoría nutricional personalizada con LN. Ed. Yanely García en Trasciende Gym Ocotlán. Planes alimenticios adaptados a tu estilo de vida y objetivos deportivos.",
+  provider: {
+    "@type": "ExerciseGym",
+    name: "Gym Trasciende",
+    url: "https://trasciendegym.com",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Guillermo Prieto Sur 45, La Estación",
+      addressLocality: "Ocotlán de Morelos",
+      addressRegion: "Oaxaca",
+      postalCode: "71510",
+      addressCountry: "MX",
+    },
+  },
+  serviceType: "Asesoría nutricional personalizada",
+  areaServed: { "@type": "City", name: "Ocotlán de Morelos" },
+  url: "https://trasciendegym.com/servicios/nutricion",
+};
 ---
 
 <Layout
@@ -58,6 +82,7 @@ const whatsappUrl =
   description="Asesoría nutricional personalizada con LN. Ed. Yanely García en Trasciende Gym Ocotlán. Mejora tu rendimiento deportivo con nutrición profesional. 10–20% descuento para miembros."
   keywords="nutrióloga ocotlán, asesoría nutricional, Yanely García, nutrición deportiva, plan alimenticio personalizado, descuento nutrición gym trasciende"
   type="website"
+  schema={schema}
 >
   {
     /* ═══════════════════════════════════════════════════════════════
@@ -78,7 +103,7 @@ const whatsappUrl =
       />
       {/* Tinte verde olivo sobre la foto */}
       <div
-        class="absolute inset-0 bg-linear-to-br from-[#2d3d10]/70 via-[#4a6020]/40 to-[#8fae3a]/10"
+        class="to-nutri/10 absolute inset-0 bg-linear-to-br from-[#2d3d10]/70 via-[#4a6020]/40"
       >
       </div>
       {
@@ -107,7 +132,7 @@ const whatsappUrl =
           {/* Badge */}
           <div class="inline-flex items-center gap-3">
             <span
-              class="rounded-full border border-[#8fae3a]/40 bg-[#8fae3a]/10 px-4 py-1.5 text-xs font-semibold tracking-widest text-[#8fae3a] uppercase"
+              class="border-nutri/40 bg-nutri/10 text-nutri rounded-full border px-4 py-1.5 text-xs font-semibold tracking-widest uppercase"
             >
               Asesoría Nutricional · Trasciende Gym
             </span>
@@ -120,7 +145,7 @@ const whatsappUrl =
           >
             Asesoría
             <span
-              class="to-primary block bg-linear-to-r from-[#8fae3a] bg-clip-text text-transparent"
+              class="to-primary from-nutri block bg-linear-to-r bg-clip-text text-transparent"
             >
               Nutricional
             </span>
@@ -134,10 +159,8 @@ const whatsappUrl =
 
           {/* Nombre y credencial */}
           <div class="flex items-center gap-3">
-            <div class="h-px w-10 bg-[#8fae3a]"></div>
-            <p
-              class="text-sm font-semibold tracking-wide text-[#8fae3a] uppercase"
-            >
+            <div class="bg-nutri h-px w-10"></div>
+            <p class="text-nutri text-sm font-semibold tracking-wide uppercase">
               LN. Ed. Yanely García · Nutrióloga
             </p>
           </div>
@@ -146,7 +169,7 @@ const whatsappUrl =
           <ul class="space-y-2.5">
             <li class="flex items-center gap-3 text-zinc-300">
               <span
-                class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#8fae3a]/15 text-base"
+                class="bg-nutri/15 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-base"
               >
                 📱
               </span>
@@ -157,7 +180,7 @@ const whatsappUrl =
             </li>
             <li class="flex items-center gap-3 text-zinc-300">
               <span
-                class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#8fae3a]/15 text-base"
+                class="bg-nutri/15 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-base"
               >
                 📍
               </span>
@@ -167,7 +190,7 @@ const whatsappUrl =
             </li>
             <li class="flex items-center gap-3 text-zinc-300">
               <span
-                class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#8fae3a]/15 text-base"
+                class="bg-nutri/15 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-base"
               >
                 📸
               </span>
@@ -175,7 +198,7 @@ const whatsappUrl =
                 href="https://instagram.com/nutriologayanely"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-sm font-medium transition-colors hover:text-[#8fae3a]"
+                class="hover:text-nutri text-sm font-medium transition-colors"
                 >@nutriologayanely</a
               >
             </li>
@@ -187,7 +210,7 @@ const whatsappUrl =
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              class="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#f28c28] px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-[#f28c28]/20 transition-all duration-300 hover:scale-105 hover:bg-[#e07d20] hover:shadow-[#f28c28]/40 active:scale-95"
+              class="group bg-cta-orange shadow-cta-orange/20 hover:shadow-cta-orange/40 inline-flex items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-base font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#e07d20] active:scale-95"
             >
               <svg
                 class="h-5 w-5"
@@ -203,7 +226,7 @@ const whatsappUrl =
             </a>
             <a
               href="#descuentos"
-              class="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-[#8fae3a]/60 px-7 py-3.5 text-base font-bold text-[#8fae3a] transition-all duration-300 hover:scale-105 hover:border-[#8fae3a] hover:bg-[#8fae3a]/10 active:scale-95"
+              class="border-nutri/60 text-nutri hover:border-nutri hover:bg-nutri/10 inline-flex items-center justify-center gap-2 rounded-xl border-2 px-7 py-3.5 text-base font-bold transition-all duration-300 hover:scale-105 active:scale-95"
             >
               Ver descuentos
               <svg
@@ -228,7 +251,7 @@ const whatsappUrl =
         >
           {/* Fondo degradado verde olivo */}
           <div
-            class="absolute inset-0 bg-linear-to-br from-[#4a6020] via-[#6a8a28] to-[#8fae3a] lg:rounded-tl-[4rem]"
+            class="to-nutri absolute inset-0 bg-linear-to-br from-[#4a6020] via-[#6a8a28] lg:rounded-tl-[4rem]"
           >
           </div>
           {/* Overlay oscuro para profundidad */}
@@ -255,7 +278,7 @@ const whatsappUrl =
           </div>
           {/* Foto de la nutrióloga */}
           <img
-            src="/nutri.png"
+            src="/nutri.webp"
             alt="LN. Ed. Yanely García — Nutrióloga Trasciende Gym"
             class="relative z-10 max-h-screen w-auto object-contain object-bottom"
             loading="eager"
@@ -275,13 +298,13 @@ const whatsappUrl =
       {/* Header */}
       <div class="mb-14 text-center">
         <span
-          class="mb-4 inline-block rounded-full border border-[#8fae3a]/30 bg-[#8fae3a]/10 px-4 py-1 text-xs font-semibold tracking-widest text-[#8fae3a] uppercase"
+          class="border-nutri/30 bg-nutri/10 text-nutri mb-4 inline-block rounded-full border px-4 py-1 text-xs font-semibold tracking-widest uppercase"
         >
           El Servicio
         </span>
         <h2 class="text-3xl font-black text-white md:text-5xl">
           ¿Qué es la
-          <span class="text-[#8fae3a]"> Asesoría Nutricional?</span>
+          <span class="text-nutri"> Asesoría Nutricional?</span>
         </h2>
       </div>
 
@@ -289,7 +312,7 @@ const whatsappUrl =
       <div class="grid gap-6 md:grid-cols-3">
         {/* Tarjeta 1 */}
         <article
-          class="group relative overflow-hidden rounded-3xl border border-[#8fae3a]/20 bg-zinc-900/60 p-8 backdrop-blur-sm transition-all duration-300 hover:border-[#8fae3a]/50 hover:bg-zinc-900/80 hover:shadow-xl hover:shadow-[#8fae3a]/10"
+          class="group border-nutri/20 hover:border-nutri/50 hover:shadow-nutri/10 relative overflow-hidden rounded-3xl border bg-zinc-900/60 p-8 backdrop-blur-sm transition-all duration-300 hover:bg-zinc-900/80 hover:shadow-xl"
         >
           {/* Imagen de fondo decorativa */}
           <div class="absolute inset-0 overflow-hidden rounded-3xl">
@@ -306,7 +329,7 @@ const whatsappUrl =
           </div>
           <div class="relative z-10">
             <div
-              class="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#8fae3a]/15 text-2xl"
+              class="bg-nutri/15 mb-5 flex h-14 w-14 items-center justify-center rounded-2xl text-2xl"
             >
               🧠
             </div>
@@ -318,7 +341,7 @@ const whatsappUrl =
               dietas genéricas, solo lo que funciona para ti.
             </p>
             <div
-              class="mt-5 h-0.5 w-10 bg-[#8fae3a] transition-all duration-300 group-hover:w-16"
+              class="bg-nutri mt-5 h-0.5 w-10 transition-all duration-300 group-hover:w-16"
             >
             </div>
           </div>
@@ -326,7 +349,7 @@ const whatsappUrl =
 
         {/* Tarjeta 2 */}
         <article
-          class="group relative overflow-hidden rounded-3xl border border-[#8fae3a]/20 bg-zinc-900/60 p-8 backdrop-blur-sm transition-all duration-300 hover:border-[#8fae3a]/50 hover:bg-zinc-900/80 hover:shadow-xl hover:shadow-[#8fae3a]/10 md:-translate-y-4"
+          class="group border-nutri/20 hover:border-nutri/50 hover:shadow-nutri/10 relative overflow-hidden rounded-3xl border bg-zinc-900/60 p-8 backdrop-blur-sm transition-all duration-300 hover:bg-zinc-900/80 hover:shadow-xl md:-translate-y-4"
         >
           <div class="absolute inset-0 overflow-hidden rounded-3xl">
             <img
@@ -362,7 +385,7 @@ const whatsappUrl =
 
         {/* Tarjeta 3 */}
         <article
-          class="group relative overflow-hidden rounded-3xl border border-[#8fae3a]/20 bg-zinc-900/60 p-8 backdrop-blur-sm transition-all duration-300 hover:border-[#8fae3a]/50 hover:bg-zinc-900/80 hover:shadow-xl hover:shadow-[#8fae3a]/10"
+          class="group border-nutri/20 hover:border-nutri/50 hover:shadow-nutri/10 relative overflow-hidden rounded-3xl border bg-zinc-900/60 p-8 backdrop-blur-sm transition-all duration-300 hover:bg-zinc-900/80 hover:shadow-xl"
         >
           <div class="absolute inset-0 overflow-hidden rounded-3xl">
             <img
@@ -378,7 +401,7 @@ const whatsappUrl =
           </div>
           <div class="relative z-10">
             <div
-              class="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#8fae3a]/15 text-2xl"
+              class="bg-nutri/15 mb-5 flex h-14 w-14 items-center justify-center rounded-2xl text-2xl"
             >
               📊
             </div>
@@ -390,7 +413,7 @@ const whatsappUrl =
               tu proceso para garantizar resultados reales.
             </p>
             <div
-              class="mt-5 h-0.5 w-10 bg-[#8fae3a] transition-all duration-300 group-hover:w-16"
+              class="bg-nutri mt-5 h-0.5 w-10 transition-all duration-300 group-hover:w-16"
             >
             </div>
           </div>
@@ -407,13 +430,13 @@ const whatsappUrl =
   <SectionContainer id="nutri" class="py-16 md:py-24">
     <div class="mx-auto max-w-6xl">
       <div
-        class="overflow-hidden rounded-3xl border border-[#8fae3a]/20 bg-linear-to-br from-zinc-900 to-zinc-950"
+        class="border-nutri/20 overflow-hidden rounded-3xl border bg-linear-to-br from-zinc-900 to-zinc-950"
       >
         <div class="flex flex-col md:flex-row">
           {/* Foto */}
           <div class="relative shrink-0 overflow-hidden md:w-80 lg:w-96">
             <div
-              class="absolute inset-0 bg-linear-to-b from-[#4a6020] to-[#8fae3a] opacity-80"
+              class="to-nutri absolute inset-0 bg-linear-to-b from-[#4a6020] opacity-80"
             >
             </div>
             <img
@@ -433,14 +456,14 @@ const whatsappUrl =
           <div class="flex flex-col justify-center gap-6 p-8 md:p-12 lg:p-16">
             <div>
               <p
-                class="mb-2 text-xs font-semibold tracking-widest text-[#8fae3a] uppercase"
+                class="text-nutri mb-2 text-xs font-semibold tracking-widest uppercase"
               >
                 Conoce a tu nutrióloga
               </p>
               <h2 class="text-3xl font-black text-white md:text-4xl">
                 LN. Ed. Yanely García
               </h2>
-              <p class="mt-1 text-lg font-semibold text-[#8fae3a]">
+              <p class="text-nutri mt-1 text-lg font-semibold">
                 Nutrióloga Certificada
               </p>
             </div>
@@ -455,12 +478,12 @@ const whatsappUrl =
             {/* Badges */}
             <div class="flex flex-wrap gap-2">
               <span
-                class="rounded-full bg-[#8fae3a]/15 px-4 py-1.5 text-sm font-semibold text-[#8fae3a]"
+                class="bg-nutri/15 text-nutri rounded-full px-4 py-1.5 text-sm font-semibold"
               >
                 ✅ Consulta Presencial
               </span>
               <span
-                class="rounded-full bg-[#8fae3a]/15 px-4 py-1.5 text-sm font-semibold text-[#8fae3a]"
+                class="bg-nutri/15 text-nutri rounded-full px-4 py-1.5 text-sm font-semibold"
               >
                 💻 Consulta Online
               </span>
@@ -477,7 +500,7 @@ const whatsappUrl =
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 rounded-xl bg-[#f28c28] px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-[#e07d20]"
+                class="bg-cta-orange inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-[#e07d20]"
               >
                 <svg
                   class="h-4 w-4"
@@ -545,13 +568,13 @@ const whatsappUrl =
       {/* Header */}
       <div class="mb-12 text-center">
         <span
-          class="mb-3 inline-block rounded-full border border-[#8fae3a]/30 bg-[#8fae3a]/10 px-4 py-1 text-xs font-semibold tracking-widest text-[#8fae3a] uppercase"
+          class="border-nutri/30 bg-nutri/10 text-nutri mb-3 inline-block rounded-full border px-4 py-1 text-xs font-semibold tracking-widest uppercase"
         >
           Exclusivo para Miembros
         </span>
         <h2 class="text-3xl font-black text-white md:text-5xl">
           Códigos de
-          <span class="text-[#8fae3a]"> Descuento</span>
+          <span class="text-nutri"> Descuento</span>
         </h2>
         <p class="mx-auto mt-4 max-w-xl text-zinc-400">
           Beneficio exclusivo para la familia Trasciende Gym en asesoría
@@ -583,13 +606,11 @@ const whatsappUrl =
               </div>
               {/* Sello */}
               <div
-                class="shrink-0 rounded-full border-4 border-[#8fae3a] p-3 text-center"
+                class="border-nutri shrink-0 rounded-full border-4 p-3 text-center"
               >
-                <p class="text-2xl leading-none font-black text-[#8fae3a]">
-                  10%
-                </p>
+                <p class="text-nutri text-2xl leading-none font-black">10%</p>
                 <p
-                  class="text-[9px] font-bold tracking-widest text-[#8fae3a] uppercase"
+                  class="text-nutri text-[9px] font-bold tracking-widest uppercase"
                 >
                   OFF
                 </p>
@@ -653,7 +674,7 @@ const whatsappUrl =
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              class="flex w-full items-center justify-center gap-2 rounded-xl bg-[#8fae3a] py-3.5 text-sm font-bold text-black transition-all duration-300 hover:scale-[1.02] hover:bg-[#a0c245]"
+              class="bg-nutri flex w-full items-center justify-center gap-2 rounded-xl py-3.5 text-sm font-bold text-black transition-all duration-300 hover:scale-[1.02] hover:bg-[#a0c245]"
             >
               Solicitar Descuento por WhatsApp
             </a>
@@ -662,12 +683,12 @@ const whatsappUrl =
 
         {/* ── Cupón 2 — Asesorados Eli Ortiz (20%) ── */}
         <div
-          class="relative overflow-hidden rounded-3xl border border-[#8fae3a]/40 bg-linear-to-br from-[#1a2a05] to-[#0f1a03] backdrop-blur-md"
+          class="border-nutri/40 relative overflow-hidden rounded-3xl border bg-linear-to-br from-[#1a2a05] to-[#0f1a03] backdrop-blur-md"
           style="background-image: radial-gradient(circle at 0% 100%, rgba(143,174,58,0.15) 0%, transparent 60%)"
         >
           {/* Ribbon diagonal */}
           <div
-            class="absolute top-6 -right-8 z-20 rotate-45 bg-[#8fae3a] px-10 py-1 text-center"
+            class="bg-nutri absolute top-6 -right-8 z-20 rotate-45 px-10 py-1 text-center"
           >
             <span
               class="text-xs font-black tracking-widest text-black uppercase"
@@ -675,13 +696,11 @@ const whatsappUrl =
             >
           </div>
 
-          <div
-            class="border-b-2 border-dashed border-[#8fae3a]/30 px-8 pt-8 pb-6"
-          >
+          <div class="border-nutri/30 border-b-2 border-dashed px-8 pt-8 pb-6">
             <div class="flex items-start justify-between gap-4">
               <div>
                 <p
-                  class="mb-1 text-xs font-semibold tracking-widest text-[#8fae3a]/70 uppercase"
+                  class="text-nutri/70 mb-1 text-xs font-semibold tracking-widest uppercase"
                 >
                   Para
                 </p>
@@ -707,7 +726,7 @@ const whatsappUrl =
             {/* Servicio */}
             <div class="mb-4">
               <p
-                class="mb-1 text-xs font-semibold tracking-wide text-[#8fae3a]/70 uppercase"
+                class="text-nutri/70 mb-1 text-xs font-semibold tracking-wide uppercase"
               >
                 Servicio
               </p>
@@ -717,9 +736,9 @@ const whatsappUrl =
             </div>
 
             {/* Válido para */}
-            <div class="mb-6 rounded-xl bg-[#8fae3a]/10 p-4">
+            <div class="bg-nutri/10 mb-6 rounded-xl p-4">
               <p
-                class="text-xs font-semibold tracking-wide text-[#8fae3a]/70 uppercase"
+                class="text-nutri/70 text-xs font-semibold tracking-wide uppercase"
               >
                 Válido para
               </p>
@@ -734,7 +753,7 @@ const whatsappUrl =
 
             {/* Logo Yanely estilizado */}
             <div
-              class="mb-6 rounded-2xl border border-[#8fae3a]/20 bg-[#8fae3a]/10 p-4 text-center"
+              class="border-nutri/20 bg-nutri/10 mb-6 rounded-2xl border p-4 text-center"
             >
               <div class="flex items-center justify-center gap-2 text-lg">
                 <span title="Cerebro">🧠</span>
@@ -749,7 +768,7 @@ const whatsappUrl =
                 Yanely García
               </p>
               <p
-                class="text-[10px] font-semibold tracking-widest text-[#8fae3a]/60 uppercase"
+                class="text-nutri/60 text-[10px] font-semibold tracking-widest uppercase"
               >
                 Nutrióloga
               </p>
@@ -793,7 +812,7 @@ const whatsappUrl =
         {/* Horarios */}
         <div>
           <p
-            class="mb-3 text-xs font-semibold tracking-widest text-[#8fae3a] uppercase"
+            class="text-nutri mb-3 text-xs font-semibold tracking-widest uppercase"
           >
             Disponibilidad
           </p>
@@ -808,10 +827,10 @@ const whatsappUrl =
 
         {/* Contacto directo */}
         <div
-          class="flex flex-col justify-center rounded-3xl border border-[#8fae3a]/20 bg-linear-to-br from-zinc-900 to-zinc-950 p-8"
+          class="border-nutri/20 flex flex-col justify-center rounded-3xl border bg-linear-to-br from-zinc-900 to-zinc-950 p-8"
         >
           <p
-            class="mb-3 text-xs font-semibold tracking-widest text-[#8fae3a] uppercase"
+            class="text-nutri mb-3 text-xs font-semibold tracking-widest uppercase"
           >
             Contacto Directo
           </p>
@@ -822,10 +841,10 @@ const whatsappUrl =
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center gap-4 rounded-xl bg-[#f28c28]/10 p-4 transition-all duration-200 hover:bg-[#f28c28]/20"
+              class="bg-cta-orange/10 hover:bg-cta-orange/20 flex items-center gap-4 rounded-xl p-4 transition-all duration-200"
             >
               <div
-                class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#f28c28]"
+                class="bg-cta-orange flex h-12 w-12 shrink-0 items-center justify-center rounded-xl"
               >
                 <svg
                   class="h-6 w-6 text-white"
@@ -872,10 +891,10 @@ const whatsappUrl =
 
             <div class="flex items-center gap-4 rounded-xl bg-zinc-800/50 p-4">
               <div
-                class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#8fae3a]/20"
+                class="bg-nutri/20 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl"
               >
                 <svg
-                  class="h-6 w-6 text-[#8fae3a]"
+                  class="text-nutri h-6 w-6"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -934,23 +953,23 @@ const whatsappUrl =
         </div>
 
         <div
-          class="relative z-10 rounded-3xl border border-[#8fae3a]/25 p-10 text-center md:p-16"
+          class="border-nutri/25 relative z-10 rounded-3xl border p-10 text-center md:p-16"
         >
           {/* Ícono decorativo */}
           <div
-            class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#8fae3a]/15"
+            class="bg-nutri/15 mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl"
           >
             <span class="text-3xl">🥗</span>
           </div>
 
           <p
-            class="mb-2 text-xs font-semibold tracking-widest text-[#8fae3a] uppercase"
+            class="text-nutri mb-2 text-xs font-semibold tracking-widest uppercase"
           >
             Da el primer paso
           </p>
           <h2 class="mb-4 text-3xl font-black text-white md:text-5xl">
             Transforma tu<br />
-            <span class="text-[#8fae3a]">Alimentación Hoy</span>
+            <span class="text-nutri">Alimentación Hoy</span>
           </h2>
           <p
             class="mx-auto mb-8 max-w-xl text-lg leading-relaxed text-zinc-300"
@@ -958,9 +977,8 @@ const whatsappUrl =
             Agenda tu primera consulta con <strong class="text-white"
               >Yanely García</strong
             > y descubre cómo la nutrición correcta puede multiplicar tus resultados
-            en el gym. <strong class="text-[#8fae3a]"
-              >10–20% de descuento</strong
-            > disponible para miembros Trasciende.
+            en el gym. <strong class="text-nutri">10–20% de descuento</strong> disponible
+            para miembros Trasciende.
           </p>
 
           <div
@@ -970,7 +988,7 @@ const whatsappUrl =
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#f28c28] px-8 py-4 text-lg font-bold text-white shadow-lg shadow-[#f28c28]/20 transition-all duration-300 hover:scale-105 hover:bg-[#e07d20] hover:shadow-[#f28c28]/40 sm:w-auto"
+              class="bg-cta-orange shadow-cta-orange/20 hover:shadow-cta-orange/40 inline-flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 text-lg font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#e07d20] sm:w-auto"
             >
               <svg
                 class="h-5 w-5"
@@ -986,7 +1004,7 @@ const whatsappUrl =
             </a>
             <a
               href="#descuentos"
-              class="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-[#8fae3a] px-8 py-4 text-lg font-bold text-[#8fae3a] transition-all duration-300 hover:scale-105 hover:bg-[#8fae3a]/10 sm:w-auto"
+              class="border-nutri text-nutri hover:bg-nutri/10 inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 px-8 py-4 text-lg font-bold transition-all duration-300 hover:scale-105 sm:w-auto"
             >
               Ver Descuentos
             </a>

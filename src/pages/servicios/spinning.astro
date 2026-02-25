@@ -24,51 +24,11 @@ import ButtonAnimation from "@components/icons/ButtonAnimation.astro";
 import ArrowAnimation from "@components/icons/ArrowAnimation.astro";
 import MobileBottomNav from "@components/layout/MobileBottomNav.tsx";
 import Gallery from "@components/sections/Gallery.astro";
+import ServiceCTA from "@components/sections/ServiceCTA.astro";
+import { spinningSlides } from "../../data/services";
+import { servicePageNavItems } from "../../data/navigation";
 
-// 👇 INFORMACIÓN DEL SLIDER - EDITA AQUÍ
-const infoSlides = [
-  {
-    title: "Para Todos los Niveles",
-    description:
-      "Desde principiantes hasta ciclistas avanzados, hay un lugar para ti.",
-    items: [
-      "Clases adaptadas a tu ritmo y capacidad",
-      "Controla tu propia resistencia e intensidad",
-      "Inducción gratuita para nuevos miembros",
-    ],
-    image: "/spining1.webp", // 👈 CAMBIAR: Imagen para este slide
-  },
-  {
-    title: "Quema Hasta 800 Calorías",
-    description: "El entrenamiento cardiovascular más efectivo.",
-    items: [
-      "Clases de 45-60 minutos de alta intensidad",
-      "Entrenamientos con música motivadora",
-      "Instructores certificados que te impulsan",
-    ],
-    image: "/gym-10.jpg", // 👈 CAMBIAR: Imagen para este slide
-  },
-  {
-    title: "Bajo Impacto, Alto Resultado",
-    description: "Ejercicio intenso sin dañar tus articulaciones.",
-    items: [
-      "Fortalece piernas, glúteos y core",
-      "Mejora tu salud cardiovascular",
-      "Resultados visibles en 4-6 semanas",
-    ],
-    image: "/soinning2.webp", // 👈 CAMBIAR: Imagen para este slide
-  },
-  {
-    title: "¿Qué Necesito Para Asistir?",
-    description: "Solo lo básico para disfrutar tu clase.",
-    items: [
-      "Ropa deportiva cómoda y transpirable",
-      "Toalla y botella de agua",
-      "Tenis deportivos o zapatos de ciclismo (opcional)",
-    ],
-    image: "/nosotros.jpg", // 👈 CAMBIAR: Imagen para este slide
-  },
-];
+const infoSlides = spinningSlides;
 
 // Horarios de clases de spinning
 const schedule = [
@@ -78,29 +38,31 @@ const schedule = [
   { days: "Lunes a Viernes", hours: "7:00 PM - 8:00 PM" },
 ];
 
-// Configuración de navegación móvil
-const mobileNavItems = [
-  {
-    id: "horarios",
-    label: "Horarios",
-    href: "#horarios",
-    icon: "clock" as const,
+const mobileNavItems = servicePageNavItems;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Clases de Spinning",
+  description:
+    "Clases de spinning para todos los niveles en Gym Trasciende Ocotlán. Quema calorías, mejora tu salud cardiovascular y diviértete al ritmo de la música con instructores certificados.",
+  provider: {
+    "@type": "ExerciseGym",
+    name: "Gym Trasciende",
+    url: "https://trasciendegym.com",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Guillermo Prieto Sur 45, La Estación",
+      addressLocality: "Ocotlán de Morelos",
+      addressRegion: "Oaxaca",
+      postalCode: "71510",
+      addressCountry: "MX",
+    },
   },
-  { id: "precios", label: "Precios", href: "#precios", icon: "tag" as const },
-  {
-    id: "inscribirse",
-    label: "Inscríbete",
-    href: "/contacto",
-    icon: "star" as const,
-  },
-  {
-    id: "galeria",
-    label: "Galería",
-    href: "#galeria",
-    icon: "image" as const,
-  },
-  { id: "servicios", label: "Más", href: "/servicios", icon: "grid" as const },
-];
+  serviceType: "Clases grupales de spinning",
+  areaServed: { "@type": "City", name: "Ocotlán de Morelos" },
+  url: "https://trasciendegym.com/servicios/spinning",
+};
 ---
 
 <Layout
@@ -108,6 +70,7 @@ const mobileNavItems = [
   description="¡Quema calorías con las mejores clases de spinning en Ocotlán! En Trasciende Gym tenemos el mejor ambiente y horarios desde las 5 am. ¡Reserva tu lugar hoy!"
   keywords="clases spinning, spinning gym, entrenamiento cardiovascular, quemar calorías, clases grupales fitness, spinning para principiantes, instructores spinning certificados"
   type="website"
+  schema={schema}
 >
   {/* 1. Hero con HeroClipped */}
   <HeroClipped
@@ -203,65 +166,11 @@ const mobileNavItems = [
   <Gallery />
 
   {/* 6. CTA Final */}
-  <SectionContainer class="py-20 md:py-32">
-    <div class="mx-auto max-w-3xl">
-      <div
-        class="border-primary/30 shadow-primary/10 relative overflow-hidden rounded-3xl border bg-linear-to-br from-zinc-900 via-zinc-900 to-black p-10 text-center shadow-2xl backdrop-blur-sm md:p-16"
-      >
-        {/* Efecto de brillo */}
-        <div
-          class="via-primary/5 absolute inset-0 bg-linear-to-r from-transparent to-transparent"
-        >
-        </div>
-
-        <div class="relative z-10">
-          <h2 class="mb-4 text-3xl font-bold text-white md:text-5xl">
-            Vive la Experiencia Spinning
-          </h2>
-          <p
-            class="mx-auto mb-8 max-w-xl text-lg leading-relaxed text-zinc-300"
-          >
-            Más que un entrenamiento, es el momento de conectar contigo mismo.
-            Únete a nuestra comunidad y descubre por qué somos la mejor
-            motivación para tu día.
-          </p>
-          <div
-            class="flex flex-col items-center justify-center gap-4 sm:flex-row"
-          >
-            <a
-              href="/contacto"
-              class="bg-primary hover:shadow-primary/20 inline-flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 text-lg font-bold text-black transition-all duration-300 hover:scale-105 hover:shadow-2xl sm:w-auto"
-            >
-              ¡Reserva tu clase!
-              <svg
-                class="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                stroke-width="2.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-              </svg>
-            </a>
-
-            <a
-              href="/servicios"
-              class="border-primary hover:bg-primary/10 inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 px-8 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 sm:w-auto"
-            >
-              Ver Otros Servicios
-            </a>
-          </div>
-
-          <p class="mt-6 text-sm text-zinc-400">
-            📱 Mandanos mensaje a través de cualquier red social
-          </p>
-        </div>
-      </div>
-    </div>
-  </SectionContainer>
+  <ServiceCTA
+    heading="Vive la Experiencia Spinning"
+    description="Más que un entrenamiento, es el momento de conectar contigo mismo. Únete a nuestra comunidad y descubre por qué somos la mejor motivación para tu día."
+    ctaLabel="¡Reserva tu clase!"
+  />
 
   {/* Navegación móvil inferior */}
   <MobileBottomNav

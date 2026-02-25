@@ -12,7 +12,11 @@ interface TimeLeft {
   seconds: number;
 }
 
-export default function CountdownTimer() {
+interface Props {
+  targetDate: string;
+}
+
+export default function CountdownTimer({ targetDate: targetDateStr }: Props) {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
     hours: 0,
@@ -21,8 +25,7 @@ export default function CountdownTimer() {
   });
 
   useEffect(() => {
-    // Fecha límite: 28 de febrero 2026, 23:59:59
-    const targetDate = new Date("2026-02-28T23:59:59").getTime();
+    const targetDate = new Date(targetDateStr).getTime();
 
     const calculateTimeLeft = () => {
       const now = new Date().getTime();

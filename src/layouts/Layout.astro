@@ -15,6 +15,7 @@ interface Props {
   type?: "website" | "article";
   publishedTime?: string;
   modifiedTime?: string;
+  schema?: object;
 }
 
 const {
@@ -26,6 +27,7 @@ const {
   type = "website",
   publishedTime,
   modifiedTime,
+  schema,
 } = Astro.props;
 
 const siteUrl = "https://trasciendegym.com";
@@ -121,7 +123,7 @@ const schemaOrgWebPage = includeSchema
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="keywords" content={keywords} />
+
     <meta name="author" content={author} />
     <meta name="robots" content="index, follow" />
     <meta name="language" content="Spanish" />
@@ -177,6 +179,16 @@ const schemaOrgWebPage = includeSchema
         <script
           type="application/ld+json"
           set:html={JSON.stringify(schemaOrgWebPage)}
+        />
+      )
+    }
+
+    <!-- Schema.org JSON-LD adicional (pasado por cada página) -->
+    {
+      schema && (
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify(schema)}
         />
       )
     }

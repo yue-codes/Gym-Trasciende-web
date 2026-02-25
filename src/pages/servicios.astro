@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import HeroClipped from "@components/sections/HeroClipped.astro";
-import PrecingPlan from "@components/sections/PricingPlan.astro";
+import PricingPlan from "@components/sections/PricingPlan.astro";
 import SectionContainer from "@components/layout/SectionContainer.astro";
 import TrustMetrics from "@components/sections/TrustMetrics.astro";
 import Subtitle from "@components/ui/Subtitle.astro";
@@ -120,7 +120,7 @@ const mobileNavItems = [
   </div>
 
   <div id="precios">
-    <PrecingPlan />
+    <PricingPlan />
   </div>
 
   <!-- 4. Por qué elegirnos -->
@@ -298,12 +298,10 @@ const mobileNavItems = [
     </div>
   </SectionContainer>
   <Gallery />
+  <MobileBottomNav
+    client:load
+    items={mobileNavItems}
+    hideOnScroll={false}
+    vibration={true}
+  />
 </Layout>
-
-{/* Navegación móvil inferior */}
-<MobileBottomNav
-  client:load
-  items={mobileNavItems}
-  hideOnScroll={false}
-  vibration={true}
-/>

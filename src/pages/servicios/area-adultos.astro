@@ -24,50 +24,11 @@ import ButtonAnimation from "@components/icons/ButtonAnimation.astro";
 import ArrowAnimation from "@components/icons/ArrowAnimation.astro";
 import MobileBottomNav from "@components/layout/MobileBottomNav.tsx";
 import Gallery from "@components/sections/Gallery.astro";
+import ServiceCTA from "@components/sections/ServiceCTA.astro";
+import { areaAdultosSlides } from "../../data/services";
+import { servicePageNavItems } from "../../data/navigation";
 
-// 👇 INFORMACIÓN DEL SLIDER - EDITA AQUÍ
-const infoSlides = [
-  {
-    title: "Ejercicio Seguro y Adaptado",
-    description: "Rutinas diseñadas específicamente para adultos mayores.",
-    items: [
-      "Ejercicios de bajo impacto para cuidar articulaciones",
-      "Supervisión profesional en cada sesión",
-      "Adaptamos cada rutina a tu nivel y capacidad",
-    ],
-    image: "/fondofijo.webp", // 👈 CAMBIAR: Imagen para este slide
-  },
-  {
-    title: "Mejora tu Movilidad y Equilibrio",
-    description: "Prevención de caídas y fortalecimiento funcional.",
-    items: [
-      "Fortalecimiento óseo y muscular",
-      "Ejercicios de equilibrio y coordinación",
-      "Mejora de flexibilidad y movilidad articular",
-    ],
-    image: "/gym-9.jpg", // 👈 CAMBIAR: Imagen para este slide
-  },
-  {
-    title: "Ambiente Social y Motivador",
-    description: "Disfruta del ejercicio en compañía.",
-    items: [
-      "Clases grupales con ambiente amigable",
-      "Socialización y bienestar emocional",
-      "Actividades recreativas y dinámicas",
-    ],
-    image: "/gym-12.jpg", // 👈 CAMBIAR: Imagen para este slide
-  },
-  {
-    title: "¿Qué Necesito Para Asistir?",
-    description: "Solo lo básico para entrenar cómodo y seguro.",
-    items: [
-      "Ropa deportiva cómoda y fresca",
-      "Toalla y botella de agua",
-      "Tus ganas de sentirte mejor cada día",
-    ],
-    image: "/nosotros.jpg", // 👈 CAMBIAR: Imagen para este slide
-  },
-];
+const infoSlides = areaAdultosSlides;
 
 // Horarios para adultos mayores
 const schedule = [
@@ -75,29 +36,31 @@ const schedule = [
   { days: "Sábado", hours: "9:00 AM - 11:00 AM" },
 ];
 
-// Configuración de navegación móvil
-const mobileNavItems = [
-  {
-    id: "horarios",
-    label: "Horarios",
-    href: "#horarios",
-    icon: "clock" as const,
+const mobileNavItems = servicePageNavItems;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Área de Adultos Mayores",
+  description:
+    "Programa de ejercicio seguro y adaptado para adultos mayores en Gym Trasciende Ocotlán. Mejora tu movilidad, equilibrio y bienestar general con supervisión profesional.",
+  provider: {
+    "@type": "ExerciseGym",
+    name: "Gym Trasciende",
+    url: "https://trasciendegym.com",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Guillermo Prieto Sur 45, La Estación",
+      addressLocality: "Ocotlán de Morelos",
+      addressRegion: "Oaxaca",
+      postalCode: "71510",
+      addressCountry: "MX",
+    },
   },
-  { id: "precios", label: "Precios", href: "#precios", icon: "tag" as const },
-  {
-    id: "inscribirse",
-    label: "Inscríbete",
-    href: "/contacto",
-    icon: "star" as const,
-  },
-  {
-    id: "galeria",
-    label: "Galería",
-    href: "#galeria",
-    icon: "image" as const,
-  },
-  { id: "servicios", label: "Más", href: "/servicios", icon: "grid" as const },
-];
+  serviceType: "Ejercicio adaptado para adultos mayores",
+  areaServed: { "@type": "City", name: "Ocotlán de Morelos" },
+  url: "https://trasciendegym.com/servicios/area-adultos",
+};
 ---
 
 <Layout
@@ -105,6 +68,7 @@ const mobileNavItems = [
   description="Mejora tu salud y movilidad en Trasciende Gym Ocotlán. Ejercicio seguro para adultos mayores con atención personalizada. ¡Siéntete vital y fuerte!"
   keywords="adultos mayores, tercera edad, movilidad, salud, ejercicios adaptados, prevención caídas, bienestar, socialización, gimnasio seguro"
   type="website"
+  schema={schema}
 >
   {/* 1. Hero con HeroClipped */}
   <HeroClipped
@@ -200,65 +164,11 @@ const mobileNavItems = [
   <Gallery />
 
   {/* 6. CTA Final */}
-  <SectionContainer class="py-20 md:py-32">
-    <div class="mx-auto max-w-3xl">
-      <div
-        class="border-primary/30 shadow-primary/10 relative overflow-hidden rounded-3xl border bg-linear-to-br from-zinc-900 via-zinc-900 to-black p-10 text-center shadow-2xl backdrop-blur-sm md:p-16"
-      >
-        {/* Efecto de brillo */}
-        <div
-          class="via-primary/5 absolute inset-0 bg-linear-to-r from-transparent to-transparent"
-        >
-        </div>
-
-        <div class="relative z-10">
-          <h2 class="mb-4 text-3xl font-bold text-white md:text-5xl">
-            Vive la Experiencia Única
-          </h2>
-          <p
-            class="mx-auto mb-8 max-w-xl text-lg leading-relaxed text-zinc-300"
-          >
-            Ven a conocernos y entrena en un ambiente amigable donde cada rutina
-            está pensada para tu bienestar y seguridad. ¡Te esperamos!
-          </p>
-
-          <div
-            class="flex flex-col items-center justify-center gap-4 sm:flex-row"
-          >
-            <a
-              href="/contacto"
-              class="bg-primary hover:shadow-primary/20 inline-flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 text-lg font-bold text-black transition-all duration-300 hover:scale-105 hover:shadow-2xl sm:w-auto"
-            >
-              ¡Empieza hoy!
-              <svg
-                class="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                stroke-width="2.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-              </svg>
-            </a>
-
-            <a
-              href="/servicios"
-              class="border-primary hover:bg-primary/10 inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 px-8 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 sm:w-auto"
-            >
-              Ver Otros Servicios
-            </a>
-          </div>
-
-          <p class="mt-6 text-sm text-zinc-400">
-            📱 Mandanos mensaje a través de cualquier red social
-          </p>
-        </div>
-      </div>
-    </div>
-  </SectionContainer>
+  <ServiceCTA
+    heading="Vive la Experiencia Única"
+    description="Ven a conocernos y entrena en un ambiente amigable donde cada rutina está pensada para tu bienestar y seguridad. ¡Te esperamos!"
+    ctaLabel="¡Empieza hoy!"
+  />
 
   {/* Navegación móvil inferior */}
   <MobileBottomNav

@@ -102,7 +102,7 @@ const VIDEOS = [
 
   /* Efecto de desvanecimiento (gradiente oscuro) en el lado izquierdo */
   .carousel-container:before {
-    background-image: linear-gradient(to left, transparent, #0d0e11);
+    background-image: linear-gradient(to left, transparent, var(--color-background));
     content: "";
     height: 570px;
     left: 0;
@@ -117,7 +117,7 @@ const VIDEOS = [
 
   /* Efecto de desvanecimiento (gradiente oscuro) en el lado derecho */
   .carousel-container:after {
-    background-image: linear-gradient(to right, transparent, #0d0e11);
+    background-image: linear-gradient(to right, transparent, var(--color-background));
     content: "";
     height: 570px;
     opacity: var(--right-opacity);

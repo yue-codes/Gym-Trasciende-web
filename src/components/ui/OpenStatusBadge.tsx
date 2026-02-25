@@ -126,7 +126,7 @@ export default function OpenStatusBadge({ schedule }: Props) {
   // No renderizar hasta que tengamos el estado
   if (isOpen === null) {
     return (
-      <span class="inline-flex items-center gap-2 rounded-full bg-gray-500/20 px-3 py-1 text-xs font-medium text-gray-400">
+      <span role="status" aria-live="polite" class="inline-flex items-center gap-2 rounded-full bg-gray-500/20 px-3 py-1 text-xs font-medium text-gray-400">
         <span class="h-2 w-2 rounded-full bg-gray-400"></span>
         Cargando...
       </span>
@@ -135,7 +135,7 @@ export default function OpenStatusBadge({ schedule }: Props) {
 
   if (isOpen) {
     return (
-      <span class="bg-primary/20 text-primary inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold">
+      <span role="status" aria-live="polite" class="bg-primary/20 text-primary inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold">
         <span class="relative flex h-2 w-2">
           <span class="bg-primary absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"></span>
           <span class="bg-primary relative inline-flex h-2 w-2 rounded-full"></span>
@@ -146,7 +146,7 @@ export default function OpenStatusBadge({ schedule }: Props) {
   }
 
   return (
-    <span class="inline-flex items-center gap-2 rounded-full bg-red-500/20 px-3 py-1 text-xs font-medium text-red-400">
+    <span role="status" aria-live="polite" class="inline-flex items-center gap-2 rounded-full bg-red-500/20 px-3 py-1 text-xs font-medium text-red-400">
       <span class="h-2 w-2 rounded-full bg-red-400"></span>
       Cerrado
     </span>
