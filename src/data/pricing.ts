@@ -17,6 +17,8 @@ export interface PricingCard {
     | "Visita";
   price: string;
   features: string[];
+  featured?: boolean;
+  badge?: string;
 }
 
 export interface Area {
@@ -84,6 +86,8 @@ export const pricingData: Record<AreaId, PricingCard[]> = {
     {
       type: "Mensual",
       price: "$380",
+      featured: true,
+      badge: "Más Popular",
       features: [
         "Asesoría personalizada en rutinas",
         "Acceso completo",
@@ -113,6 +117,8 @@ export const pricingData: Record<AreaId, PricingCard[]> = {
     {
       type: "Mensual",
       price: "$500",
+      featured: true,
+      badge: "Más Popular",
       features: [
         "Cupo limitado",
         "Lun-Vie 6am-7am",
@@ -165,6 +171,8 @@ export const pricingData: Record<AreaId, PricingCard[]> = {
     {
       type: "Mensual",
       price: "$400",
+      featured: true,
+      badge: "Mejor Valor",
       features: [
         "Lun-Vie 8:15am-9:15am",
         "Clases especializadas",
@@ -182,6 +190,8 @@ export const pricingData: Record<AreaId, PricingCard[]> = {
     {
       type: "6 Meses",
       price: "$1,900",
+      featured: true,
+      badge: "Más Popular",
       features: ["Horarios de Pesas", "Todos los beneficios del área de pesas"],
     },
     {

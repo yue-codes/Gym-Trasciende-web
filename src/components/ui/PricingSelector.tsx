@@ -1,10 +1,9 @@
 /**
  * PricingSelector - Componente interactivo de precios con Preact
  *
- * Funcionalidad:
- * - Filtra áreas según props
- * - Cambio de fondo dinámico según área seleccionada
- * - Muestra tarjetas de precios por área
+ * Diseño: estética de cupón — header con sello circular de precio,
+ * divisor punteado, lista de beneficios y botón CTA full-width.
+ * Tarjetas destacadas (featured) incluyen ribbon diagonal.
  */
 
 import { useState } from "preact/hooks";
@@ -20,6 +19,22 @@ interface PricingSelectorProps {
   allowedAreas?: AreaId[]; // IDs de áreas a mostrar
   defaultArea?: AreaId; // Área seleccionada por defecto
   showSelector?: boolean; // Si debe mostrar los botones de cambio de área
+}
+
+/** Etiqueta de periodo según el tipo de plan */
+function periodLabel(type: PricingCard["type"]): string {
+  switch (type) {
+    case "Semanal":
+      return "/sem";
+    case "Quincenal":
+      return "/qna";
+    case "Mensual":
+    case "Mensual estudiante":
+    case "Spinning+Pesas":
+      return "/mes";
+    default:
+      return "";
+  }
 }
 
 export default function PricingSelector({
@@ -41,98 +56,117 @@ export default function PricingSelector({
   // Estado: área seleccionada
   const [selectedArea, setSelectedArea] = useState<AreaId>(initialArea);
 
-  // Obtener el gradiente actual
-  const currentGradient =
-    filteredAreas.find((a) => a.id === selectedArea)?.gradient || "";
-
   // Si no hay áreas que mostrar, no renderizar nada
   if (filteredAreas.length === 0) return null;
 
+  const cards = pricingData[selectedArea] ?? [];
+
   return (
-    <div className="relative overflow-hidden rounded-3xl">
-      {/* Fondo con gradiente - transición suave */}
-      <div
-        className={`absolute inset-0 bg-linear-to-br ${currentGradient} transition-all duration-1500 ease-in-out`}
-      />
-
-      {/* Overlay para suavizar aún más */}
-      <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
-
-      {/* Contenido */}
-      <div className="relative z-10 p-4 md:p-12">
-        {/* Selector de Áreas - Solo se muestra si showSelector es true y hay más de una área */}
-        {showSelector && filteredAreas.length > 1 && (
-          <div className="mb-8 md:mb-10">
-            <div className="mx-auto max-w-3xl">
-              <div className="grid grid-cols-2 gap-3 md:flex md:flex-wrap md:justify-center">
-                {filteredAreas.map((area) => (
-                  <button
-                    key={area.id}
-                    onClick={() => setSelectedArea(area.id)}
-                    aria-pressed={selectedArea === area.id}
-                    className={`group relative overflow-hidden rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-500 md:px-6 md:py-3 md:text-base ${
-                      selectedArea === area.id
-                        ? "bg-primary shadow-primary/50 scale-105 text-gray-900 shadow-lg"
-                        : "bg-white/80 text-gray-900 backdrop-blur-sm hover:bg-white/90"
-                    }`}
-                  >
-                    {/* Efecto de brillo en hover */}
-                    <span className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
-                    <span className="relative">{area.name}</span>
-                  </button>
-                ))}
-              </div>
+    <div className="relative">
+      {/* Selector de Áreas */}
+      {showSelector && filteredAreas.length > 1 && (
+        <div className="mb-10">
+          <div className="mx-auto max-w-3xl">
+            <div className="grid grid-cols-2 gap-3 md:flex md:flex-wrap md:justify-center">
+              {filteredAreas.map((area) => (
+                <button
+                  key={area.id}
+                  onClick={() => setSelectedArea(area.id)}
+                  aria-pressed={selectedArea === area.id}
+                  className={`relative overflow-hidden rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 md:px-6 md:py-3 md:text-base ${
+                    selectedArea === area.id
+                      ? "bg-primary scale-105 text-black shadow-lg shadow-primary/30"
+                      : "border border-zinc-700/50 bg-zinc-800/60 text-secondary hover:border-primary/40 hover:bg-zinc-700/60"
+                  }`}
+                >
+                  <span className="relative">{area.name}</span>
+                </button>
+              ))}
             </div>
           </div>
-        )}
+        </div>
+      )}
 
-        {/* Tarjetas de Precios - Scroll horizontal en móvil */}
-        <div className="relative">
-          <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-4 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible">
-            {pricingData[selectedArea]?.map((card, index) => (
-              <div
-                key={`${selectedArea}-${index}`}
-                className="group max-w-62.5 min-w-62.5 shrink-0 snap-center rounded-2xl bg-white/85 p-5 shadow-lg backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:scale-[1.03] hover:bg-linear-to-br hover:from-emerald-500/90 hover:to-teal-600/90 hover:shadow-2xl active:scale-[0.98] md:max-w-none md:min-w-0 md:hover:-translate-y-2 md:hover:scale-[1.03]"
-                style={{
-                  animation: "fadeInUp 0.8s ease-out",
-                  animationDelay: `${index * 100}ms`,
-                  animationFillMode: "both",
-                }}
-              >
-                {/* Tipo de plan */}
-                <h3 className="mb-2 text-center text-xl font-bold text-gray-800 transition-colors duration-300 group-hover:text-white">
-                  {card.type}
-                </h3>
+      {/* Tarjetas de Precios */}
+      <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible">
+        {cards.map((card, index) => {
+          const featured = card.featured ?? false;
+          const period = periodLabel(card.type);
 
-                {/* Precio */}
-                <div className="mb-6 text-center">
-                  <span className="text-4xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-white">
+          return (
+            <div
+              key={`${selectedArea}-${index}`}
+              className={`relative min-w-72 shrink-0 snap-center overflow-hidden rounded-3xl backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl md:min-w-0 ${
+                featured
+                  ? "border border-primary/40 bg-linear-to-br from-[#1a2800] to-zinc-900/80 shadow-lg shadow-primary/10"
+                  : "border border-zinc-700/60 bg-zinc-900/80"
+              }`}
+              style={{
+                animation: "fadeInUp 0.6s ease-out",
+                animationDelay: `${index * 100}ms`,
+                animationFillMode: "both",
+              }}
+            >
+              {/* Ribbon "Más Popular" */}
+              {featured && card.badge && (
+                <div className="absolute top-4 right-[-28px] z-10 rotate-45 bg-primary px-10 py-1 text-xs font-bold tracking-wide text-black shadow-md">
+                  {card.badge}
+                </div>
+              )}
+
+              {/* Header: nombre del plan + sello de precio */}
+              <div className="flex items-center justify-between gap-4 p-5 pb-4">
+                <div className="min-w-0">
+                  <p className="text-xs font-semibold tracking-widest text-zinc-400 uppercase">
+                    Plan
+                  </p>
+                  <h3
+                    className={`mt-0.5 text-lg font-bold leading-tight ${
+                      featured ? "text-primary" : "text-secondary"
+                    }`}
+                  >
+                    {card.type}
+                  </h3>
+                </div>
+
+                {/* Sello circular con precio */}
+                <div
+                  className={`flex shrink-0 flex-col items-center justify-center rounded-full border-4 p-1 text-center ${
+                    featured
+                      ? "border-primary bg-[#1a2800]"
+                      : "border-zinc-600 bg-zinc-800"
+                  }`}
+                  style={{ width: "5rem", height: "5rem" }}
+                >
+                  <span
+                    className={`text-base font-extrabold leading-none ${
+                      featured ? "text-primary" : "text-secondary"
+                    }`}
+                  >
                     {card.price}
                   </span>
-                  {(card.type === "Semanal" ||
-                    card.type === "Quincenal" ||
-                    card.type === "Mensual" ||
-                    card.type === "Mensual estudiante") && (
-                    <span className="text-gray-600 transition-colors duration-300 group-hover:text-white/90">
-                      /
-                      {card.type === "Semanal"
-                        ? "semana"
-                        : card.type === "Quincenal"
-                          ? "quincena"
-                          : "mes"}
+                  {period && (
+                    <span className="mt-0.5 text-[10px] text-zinc-400 leading-none">
+                      {period}
                     </span>
                   )}
                 </div>
+              </div>
 
-                {/* Características */}
-                <ul className="mb-6 space-y-3">
+              {/* Divisor punteado */}
+              <div
+                className={`mx-5 border-t-2 border-dashed ${
+                  featured ? "border-primary/30" : "border-zinc-700/50"
+                }`}
+              />
+
+              {/* Cuerpo: beneficios + CTA */}
+              <div className="p-5 pt-4">
+                <ul className="mb-5 space-y-2.5">
                   {card.features.map((feature) => (
-                    <li
-                      key={feature}
-                      className="flex items-start gap-2 text-gray-700 transition-colors duration-300 group-hover:text-white"
-                    >
+                    <li key={feature} className="flex items-start gap-2">
                       <svg
-                        className="mt-1 h-5 w-5 shrink-0 text-green-500 transition-all duration-300 group-hover:scale-110 group-hover:text-white"
+                        className="mt-0.5 h-4 w-4 shrink-0 text-primary"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -142,25 +176,23 @@ export default function PricingSelector({
                           clipRule="evenodd"
                         />
                       </svg>
-                      <span>{feature}</span>
+                      <span className="text-sm text-zinc-300">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
-                {/* Botón CTA como enlace a contacto */}
                 <a
                   href="/contacto"
-                  className="block w-full rounded-lg bg-linear-to-r from-gray-900 to-gray-800 px-6 py-3 text-center font-semibold text-white transition-all duration-300 group-hover:bg-white group-hover:from-white group-hover:to-white group-hover:text-emerald-700 hover:scale-105 hover:shadow-lg active:scale-95"
+                  className="block w-full rounded-xl bg-primary px-6 py-3 text-center text-sm font-bold text-black transition-all duration-200 hover:brightness-110 active:scale-95"
                 >
-                  Inscribirme
+                  Inscribirme →
                 </a>
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
+          );
+        })}
       </div>
 
-      {/* Estilos para la animación fadeInUp */}
       <style>{`
         @keyframes fadeInUp {
           from {

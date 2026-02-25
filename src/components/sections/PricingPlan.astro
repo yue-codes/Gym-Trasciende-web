@@ -27,10 +27,16 @@ const { allowedAreas, defaultArea = "area2", showSelector } = Astro.props;
   fixedBackground={true}
   class="py-12 lg:py-16"
 >
+  <!-- Radial glow sutil en primary para coherencia de cupón -->
+  <div
+    class="pointer-events-none absolute inset-0 opacity-20"
+    style="background: radial-gradient(ellipse 80% 50% at 50% 60%, #d5fb00, transparent);"
+  />
+
   <Subtitle>Sin letras chiquitas: Nuestros Precios</Subtitle>
 
-  <div class="mt-8">
-    <!-- 
+  <div class="relative mt-8">
+    <!--
       client:visible = Solo se hidrata cuando es visible (mejor rendimiento)
       Cambia a client:load si quieres que se hidrate inmediatamente
     -->
