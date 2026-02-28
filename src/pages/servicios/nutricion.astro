@@ -583,107 +583,10 @@ const schema = {
       </div>
 
       {/* Cupones */}
-      <div class="grid gap-8 md:grid-cols-2">
-        {/* ── Cupón 1 — Miembros Gym (10%) ── */}
+      <div class="flex justify-center">
+        {/* ── Cupón 1 — Miembros Gym (10%) — Estilo Premium ── */}
         <div
-          class="relative overflow-hidden rounded-3xl border border-zinc-700/60 bg-zinc-900/80 backdrop-blur-md"
-          style="background-image: radial-gradient(circle at 100% 0%, rgba(143,174,58,0.08) 0%, transparent 60%)"
-        >
-          {/* Borde punteado superior decorativo */}
-          <div
-            class="border-b-2 border-dashed border-zinc-700/60 px-8 pt-8 pb-6"
-          >
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <p
-                  class="mb-1 text-xs font-semibold tracking-widest text-zinc-500 uppercase"
-                >
-                  Para
-                </p>
-                <h3 class="text-xl leading-tight font-black text-white">
-                  Miembros / Socios<br />Trasciende Gym
-                </h3>
-              </div>
-              {/* Sello */}
-              <div
-                class="border-nutri shrink-0 rounded-full border-4 p-3 text-center"
-              >
-                <p class="text-nutri text-2xl leading-none font-black">10%</p>
-                <p
-                  class="text-nutri text-[9px] font-bold tracking-widest uppercase"
-                >
-                  OFF
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="px-8 py-6">
-            {/* Servicio */}
-            <div class="mb-4">
-              <p
-                class="mb-1 text-xs font-semibold tracking-wide text-zinc-500 uppercase"
-              >
-                Servicio
-              </p>
-              <p class="text-base font-bold text-white">
-                Asesoría / Orientación Nutricia Personalizada
-              </p>
-            </div>
-
-            {/* Válido para */}
-            <div class="mb-6 rounded-xl bg-zinc-800/60 p-4">
-              <p
-                class="text-xs font-semibold tracking-wide text-zinc-500 uppercase"
-              >
-                Válido para
-              </p>
-              <p class="mt-1 text-sm text-zinc-300">
-                Consulta (asesoría) personalizada y/o orientación nutricional
-              </p>
-              <p class="mt-2 text-xs text-zinc-500 italic">
-                *En información de costos se especifica a qué se refiere
-                Asesoría y Orientación nutricia*
-              </p>
-            </div>
-
-            {/* Logo Yanely estilizado */}
-            <div
-              class="mb-6 rounded-2xl border border-zinc-700/40 bg-zinc-800/40 p-4 text-center"
-            >
-              <div class="flex items-center justify-center gap-2 text-lg">
-                <span title="Cerebro">🧠</span>
-                <span title="Maíz">🌽</span>
-                <span title="Vitalidad">🌿</span>
-                <span title="Corazón">❤️</span>
-              </div>
-              <p
-                class="mt-1 font-serif text-xl font-bold italic"
-                style="color: #8b2252; font-family: Georgia, serif"
-              >
-                Yanely García
-              </p>
-              <p
-                class="text-[10px] font-semibold tracking-widest text-zinc-500 uppercase"
-              >
-                Nutrióloga
-              </p>
-            </div>
-
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-nutri flex w-full items-center justify-center gap-2 rounded-xl py-3.5 text-sm font-bold text-black transition-all duration-300 hover:scale-[1.02] hover:bg-[#a0c245]"
-            >
-              Solicitar Descuento por WhatsApp
-            </a>
-          </div>
-        </div>
-
-        {/* ── Cupón 2 — Asesorados Eli Ortiz (20%) ── */}
-        <div
-          class="border-nutri/40 relative overflow-hidden rounded-3xl border bg-linear-to-br from-[#1a2a05] to-[#0f1a03] backdrop-blur-md"
+          class="border-nutri/40 relative max-w-2xl overflow-hidden rounded-3xl border bg-linear-to-br from-[#1a2a05] to-[#0f1a03] backdrop-blur-md"
           style="background-image: radial-gradient(circle at 0% 100%, rgba(143,174,58,0.15) 0%, transparent 60%)"
         >
           {/* Ribbon diagonal */}
@@ -705,14 +608,14 @@ const schema = {
                   Para
                 </p>
                 <h3 class="text-xl leading-tight font-black text-white">
-                  Asesorados<br />Trasciende by Eli Ortiz
+                  Miembros / Socios<br />Trasciende Gym
                 </h3>
               </div>
               {/* Sello */}
               <div
                 class="border-primary shrink-0 rounded-full border-4 p-3 text-center"
               >
-                <p class="text-primary text-2xl leading-none font-black">20%</p>
+                <p class="text-primary text-2xl leading-none font-black">10%</p>
                 <p
                   class="text-primary text-[9px] font-bold tracking-widest uppercase"
                 >
@@ -785,213 +688,69 @@ const schema = {
           </div>
         </div>
       </div>
-
-      {/* Nota al pie */}
-      <p class="mt-8 text-center text-sm text-zinc-500">
-        💡 Pregunta por nuestros códigos de descuento disponibles para todos los
-        miembros <strong class="text-zinc-400">TRASCIENDE_GYM</strong>
-      </p>
     </div>
+
+    {/* Nota al pie */}
+    <p class="mt-8 text-center text-sm text-zinc-500">
+      💡 Pregunta por nuestros códigos de descuento disponibles para todos los
+      miembros <strong class="text-zinc-400">TRASCIENDE_GYM</strong>
+    </p>
   </section>
 
-  {
-    /* ═══════════════════════════════════════════════════════════════
+{
+  /* ═══════════════════════════════════════════════════════════════
       SECCIÓN 5 — TRUST METRICS
       ═══════════════════════════════════════════════════════════════ */
-  }
-  <TrustMetrics />
+}
+<TrustMetrics />
 
-  {
-    /* ═══════════════════════════════════════════════════════════════
+{
+  /* ═══════════════════════════════════════════════════════════════
       SECCIÓN 6 — HORARIOS + CONTACTO DIRECTO
       ═══════════════════════════════════════════════════════════════ */
-  }
-  <SectionContainer id="horarios" class="py-20 md:py-28">
-    <div class="mx-auto max-w-5xl">
-      <div class="grid gap-8 md:grid-cols-2">
-        {/* Horarios */}
-        <div>
-          <p
-            class="text-nutri mb-3 text-xs font-semibold tracking-widest uppercase"
-          >
-            Disponibilidad
-          </p>
-          <h2 class="mb-6 text-2xl font-black text-white md:text-3xl">
-            Horarios de Asesorías
-          </h2>
-          <ScheduleSection schedule={schedule} />
-          <p class="mt-4 text-sm text-zinc-500">
-            💡 Agenda con anticipación para asegurar tu lugar.
-          </p>
-        </div>
-
-        {/* Contacto directo */}
-        <div
-          class="border-nutri/20 flex flex-col justify-center rounded-3xl border bg-linear-to-br from-zinc-900 to-zinc-950 p-8"
+}
+<SectionContainer id="horarios" class="py-20 md:py-28">
+  <div class="mx-auto max-w-5xl">
+    <div class="grid gap-8 md:grid-cols-2">
+      {/* Horarios */}
+      <div>
+        <p
+          class="text-nutri mb-3 text-xs font-semibold tracking-widest uppercase"
         >
-          <p
-            class="text-nutri mb-3 text-xs font-semibold tracking-widest uppercase"
-          >
-            Contacto Directo
-          </p>
-          <h3 class="mb-6 text-2xl font-black text-white">Habla con Yanely</h3>
-
-          <div class="space-y-4">
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-cta-orange/10 hover:bg-cta-orange/20 flex items-center gap-4 rounded-xl p-4 transition-all duration-200"
-            >
-              <div
-                class="bg-cta-orange flex h-12 w-12 shrink-0 items-center justify-center rounded-xl"
-              >
-                <svg
-                  class="h-6 w-6 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
-                  ></path>
-                </svg>
-              </div>
-              <div>
-                <p class="text-xs font-semibold text-zinc-500">WhatsApp</p>
-                <p class="font-bold text-white">951 611 7406</p>
-              </div>
-            </a>
-
-            <a
-              href="https://instagram.com/nutriologayanely"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center gap-4 rounded-xl bg-zinc-800/50 p-4 transition-all duration-200 hover:bg-zinc-800"
-            >
-              <div
-                class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-purple-600 to-pink-500"
-              >
-                <svg
-                  class="h-6 w-6 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
-                  ></path>
-                </svg>
-              </div>
-              <div>
-                <p class="text-xs font-semibold text-zinc-500">Instagram</p>
-                <p class="font-bold text-white">@nutriologayanely</p>
-              </div>
-            </a>
-
-            <div class="flex items-center gap-4 rounded-xl bg-zinc-800/50 p-4">
-              <div
-                class="bg-nutri/20 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl"
-              >
-                <svg
-                  class="text-nutri h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                  ></path>
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
-              </div>
-              <div>
-                <p class="text-xs font-semibold text-zinc-500">Ubicación</p>
-                <p class="font-bold text-white">Ocotlán de Morelos · Online</p>
-              </div>
-            </div>
-          </div>
-        </div>
+          Disponibilidad
+        </p>
+        <h2 class="mb-6 text-2xl font-black text-white md:text-3xl">
+          Horarios de Asesorías
+        </h2>
+        <ScheduleSection schedule={schedule} />
+        <p class="mt-4 text-sm text-zinc-500">
+          💡 Agenda con anticipación para asegurar tu lugar.
+        </p>
       </div>
-    </div>
-  </SectionContainer>
 
-  {
-    /* ═══════════════════════════════════════════════════════════════
-      SECCIÓN 7 — PRECIOS
-      ═══════════════════════════════════════════════════════════════ */
-  }
-  <div id="precios">
-    <PricingPlan />
-  </div>
-
-  {
-    /* ═══════════════════════════════════════════════════════════════
-      SECCIÓN 8 — CTA FINAL
-      ═══════════════════════════════════════════════════════════════ */
-  }
-  <SectionContainer id="cta" class="py-20 md:py-28">
-    <div class="mx-auto max-w-4xl">
-      <div class="relative overflow-hidden rounded-3xl">
-        {/* Imagen de fondo: bowl de frutos rojos */}
-        <img
-          src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1200&auto=format&fit=crop&q=70"
-          alt=""
-          class="absolute inset-0 h-full w-full object-cover"
-          loading="lazy"
-          aria-hidden="true"
-        />
-        <div
-          class="from-background/95 via-background/92 absolute inset-0 bg-linear-to-br to-[#1a2a05]/88"
+      {/* Contacto directo */}
+      <div
+        class="border-nutri/20 flex flex-col justify-center rounded-3xl border bg-linear-to-br from-zinc-900 to-zinc-950 p-8"
+      >
+        <p
+          class="text-nutri mb-3 text-xs font-semibold tracking-widest uppercase"
         >
-        </div>
+          Contacto Directo
+        </p>
+        <h3 class="mb-6 text-2xl font-black text-white">Habla con Yanely</h3>
 
-        <div
-          class="border-nutri/25 relative z-10 rounded-3xl border p-10 text-center md:p-16"
-        >
-          {/* Ícono decorativo */}
-          <div
-            class="bg-nutri/15 mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl"
+        <div class="space-y-4">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-cta-orange/10 hover:bg-cta-orange/20 flex items-center gap-4 rounded-xl p-4 transition-all duration-200"
           >
-            <span class="text-3xl">🥗</span>
-          </div>
-
-          <p
-            class="text-nutri mb-2 text-xs font-semibold tracking-widest uppercase"
-          >
-            Da el primer paso
-          </p>
-          <h2 class="mb-4 text-3xl font-black text-white md:text-5xl">
-            Transforma tu<br />
-            <span class="text-nutri">Alimentación Hoy</span>
-          </h2>
-          <p
-            class="mx-auto mb-8 max-w-xl text-lg leading-relaxed text-zinc-300"
-          >
-            Agenda tu primera consulta con <strong class="text-white"
-              >Yanely García</strong
-            > y descubre cómo la nutrición correcta puede multiplicar tus resultados
-            en el gym. <strong class="text-nutri">10–20% de descuento</strong> disponible
-            para miembros Trasciende.
-          </p>
-
-          <div
-            class="flex flex-col items-center justify-center gap-4 sm:flex-row"
-          >
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-cta-orange shadow-cta-orange/20 hover:shadow-cta-orange/40 inline-flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 text-lg font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#e07d20] sm:w-auto"
+            <div
+              class="bg-cta-orange flex h-12 w-12 shrink-0 items-center justify-center rounded-xl"
             >
               <svg
-                class="h-5 w-5"
+                class="h-6 w-6 text-white"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -1000,29 +759,171 @@ const schema = {
                   d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
                 ></path>
               </svg>
-              ¡Agenda con Yanely!
-            </a>
-            <a
-              href="#descuentos"
-              class="border-nutri text-nutri hover:bg-nutri/10 inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 px-8 py-4 text-lg font-bold transition-all duration-300 hover:scale-105 sm:w-auto"
-            >
-              Ver Descuentos
-            </a>
-          </div>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-zinc-500">WhatsApp</p>
+              <p class="font-bold text-white">951 611 7406</p>
+            </div>
+          </a>
 
-          <p class="mt-6 text-sm text-zinc-500">
-            📍 Ocotlán de Morelos · Consulta presencial y online disponible
-          </p>
+          <a
+            href="https://instagram.com/nutriologayanely"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-4 rounded-xl bg-zinc-800/50 p-4 transition-all duration-200 hover:bg-zinc-800"
+          >
+            <div
+              class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-purple-600 to-pink-500"
+            >
+              <svg
+                class="h-6 w-6 text-white"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                ></path>
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-zinc-500">Instagram</p>
+              <p class="font-bold text-white">@nutriologayanely</p>
+            </div>
+          </a>
+
+          <div class="flex items-center gap-4 rounded-xl bg-zinc-800/50 p-4">
+            <div
+              class="bg-nutri/20 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl"
+            >
+              <svg
+                class="text-nutri h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-zinc-500">Ubicación</p>
+              <p class="font-bold text-white">Ocotlán de Morelos · Online</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </SectionContainer>
+  </div>
+</SectionContainer>
 
-  {/* Navegación móvil inferior */}
-  <MobileBottomNav
-    client:load
-    items={mobileNavItems}
-    hideOnScroll={false}
-    vibration={true}
-  />
+{
+  /* ═══════════════════════════════════════════════════════════════
+      SECCIÓN 7 — PRECIOS
+      ═══════════════════════════════════════════════════════════════ */
+}
+<div id="precios">
+  <PricingPlan />
+</div>
+
+{
+  /* ═══════════════════════════════════════════════════════════════
+      SECCIÓN 8 — CTA FINAL
+      ═══════════════════════════════════════════════════════════════ */
+}
+<SectionContainer id="cta" class="py-20 md:py-28">
+  <div class="mx-auto max-w-4xl">
+    <div class="relative overflow-hidden rounded-3xl">
+      {/* Imagen de fondo: bowl de frutos rojos */}
+      <img
+        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1200&auto=format&fit=crop&q=70"
+        alt=""
+        class="absolute inset-0 h-full w-full object-cover"
+        loading="lazy"
+        aria-hidden="true"
+      />
+      <div
+        class="from-background/95 via-background/92 absolute inset-0 bg-linear-to-br to-[#1a2a05]/88"
+      >
+      </div>
+
+      <div
+        class="border-nutri/25 relative z-10 rounded-3xl border p-10 text-center md:p-16"
+      >
+        {/* Ícono decorativo */}
+        <div
+          class="bg-nutri/15 mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl"
+        >
+          <span class="text-3xl">🥗</span>
+        </div>
+
+        <p
+          class="text-nutri mb-2 text-xs font-semibold tracking-widest uppercase"
+        >
+          Da el primer paso
+        </p>
+        <h2 class="mb-4 text-3xl font-black text-white md:text-5xl">
+          Transforma tu<br />
+          <span class="text-nutri">Alimentación Hoy</span>
+        </h2>
+        <p class="mx-auto mb-8 max-w-xl text-lg leading-relaxed text-zinc-300">
+          Agenda tu primera consulta con <strong class="text-white"
+            >Yanely García</strong
+          > y descubre cómo la nutrición correcta puede multiplicar tus resultados
+          en el gym. <strong class="text-nutri">10–20% de descuento</strong> disponible
+          para miembros Trasciende.
+        </p>
+
+        <div
+          class="flex flex-col items-center justify-center gap-4 sm:flex-row"
+        >
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-cta-orange shadow-cta-orange/20 hover:shadow-cta-orange/40 inline-flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 text-lg font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#e07d20] sm:w-auto"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+              ></path>
+            </svg>
+            ¡Agenda con Yanely!
+          </a>
+          <a
+            href="#descuentos"
+            class="border-nutri text-nutri hover:bg-nutri/10 inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 px-8 py-4 text-lg font-bold transition-all duration-300 hover:scale-105 sm:w-auto"
+          >
+            Ver Descuentos
+          </a>
+        </div>
+
+        <p class="mt-6 text-sm text-zinc-500">
+          📍 Ocotlán de Morelos · Consulta presencial y online disponible
+        </p>
+      </div>
+    </div>
+  </div>
+</SectionContainer>
+
+{/* Navegación móvil inferior */}
+<MobileBottomNav
+  client:load
+  items={mobileNavItems}
+  hideOnScroll={false}
+  vibration={true}
+/>
 </Layout>
