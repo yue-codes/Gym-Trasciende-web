@@ -19,6 +19,8 @@ import CountdownTimer from "@components/ui/CountdownTimer";
 import ButtonAnimation from "@components/icons/ButtonAnimation.astro";
 import ArrowAnimation from "@components/icons/ArrowAnimation.astro";
 import MobileBottomNav from "@components/layout/MobileBottomNav.tsx";
+import TiktokVideo from "@components/media/TiktokVideo.astro";
+import PromoEventoBote from "@components/sections/PromoEventoBote.astro";
 
 // ═══════════════════════════════════════════════════════════════
 //  ARCHIVO — Promos Enero / Febrero 2026
@@ -103,8 +105,8 @@ const promosJunio = [
     servicio: "Fuerza y Pesas",
     subtitulo: "Área completa con asesoría",
     precioOriginal: "$380",
-    precioPromo: "$304",   // $380 × 0.80
-    ahorro: "$76",         // $380 × 0.20
+    precioPromo: "$304", // $380 × 0.80
+    ahorro: "$76", // $380 × 0.20
     icon: "🏋️",
     imagen: "/bento-info/bentopesas.webp",
     highlight: false,
@@ -121,8 +123,8 @@ const promosJunio = [
     servicio: "Clases de Spinning",
     subtitulo: "Instructor certificado incluido",
     precioOriginal: "$500",
-    precioPromo: "$400",   // $500 × 0.80
-    ahorro: "$100",        // $500 × 0.20
+    precioPromo: "$400", // $500 × 0.80
+    ahorro: "$100", // $500 × 0.20
     icon: "🚴‍♂️",
     imagen: "/bento-info/bentospining.webp",
     highlight: true,
@@ -250,10 +252,25 @@ const faqItems = [
 //  NAVEGACIÓN MÓVIL INFERIOR
 // ═══════════════════════════════════════════════════════════════
 const mobileNavItems = [
-  { id: "planes-papa",  label: "Planes",     href: "#planes-papa",             icon: "clock" as const },
-  { id: "permanentes",  label: "Siempre",    href: "#promociones-permanentes", icon: "tag"   as const },
-  { id: "faq",          label: "FAQ",        href: "#faq",                     icon: "grid"  as const },
-  { id: "inscribirse",  label: "Inscríbete", href: "/contacto",                icon: "star"  as const },
+  {
+    id: "planes-papa",
+    label: "Planes",
+    href: "#planes-papa",
+    icon: "clock" as const,
+  },
+  {
+    id: "permanentes",
+    label: "Siempre",
+    href: "#promociones-permanentes",
+    icon: "tag" as const,
+  },
+  { id: "faq", label: "FAQ", href: "#faq", icon: "grid" as const },
+  {
+    id: "inscribirse",
+    label: "Inscríbete",
+    href: "/contacto",
+    icon: "star" as const,
+  },
 ];
 ---
 
@@ -263,21 +280,21 @@ const mobileNavItems = [
   keywords="promo día del padre gym ocotlán, descuento papás junio 2026, pesas descuento ocotlán, spinning precio especial papás, gym trasciende junio, mensualidad gym papá"
   type="website"
 >
-
-  {/* ═══════════════════════════════════════════════════════
+  {
+    /* ═══════════════════════════════════════════════════════
       SECCIÓN 1 — HERO
       Fondo: /imagenfondo5.webp con overlays oscuros
       Decorativo: "20%" gigante en el fondo (muy translúcido)
       Contenido: badge dorado, título + slogan, precios rápidos, CTAs
-      ═══════════════════════════════════════════════════════ */}
+      ═══════════════════════════════════════════════════════ */
+  }
   <section
     class="bg-background relative min-h-screen overflow-hidden"
     aria-label="Promo Día del Padre Junio 2026"
   >
-
     {/* Imagen de fondo del gym */}
     <img
-      src="/imagenfondo5.webp"
+      src="/hero-2.webp"
       alt=""
       class="absolute inset-0 h-full w-full object-cover object-center"
       loading="eager"
@@ -285,24 +302,32 @@ const mobileNavItems = [
     />
 
     {/* Mobile: overlay sólido oscuro desde abajo */}
-    <div class="from-background/97 via-background/85 absolute inset-0 bg-linear-to-t to-background/40 lg:hidden">
+    <div
+      class="from-background/97 via-background/85 to-background/40 absolute inset-0 bg-linear-to-t lg:hidden"
+    >
     </div>
 
     {/* Desktop: gradiente de izquierda (oscuro) a derecha (transparente) */}
-    <div class="from-background via-background/90 absolute inset-0 hidden bg-linear-to-r to-transparent lg:block">
+    <div
+      class="from-background via-background/90 absolute inset-0 hidden bg-linear-to-r to-transparent lg:block"
+    >
     </div>
 
     {/* Fade inferior suave en ambos breakpoints */}
-    <div class="from-background absolute inset-x-0 bottom-0 h-48 bg-linear-to-t to-transparent">
+    <div
+      class="from-background absolute inset-x-0 bottom-0 h-48 bg-linear-to-t to-transparent"
+    >
     </div>
 
-    {/* Decorativo: "20%" enorme de fondo — refuerza visualmente el descuento */}
+    {
+      /* Decorativo: "20%" enorme de fondo — refuerza visualmente el descuento */
+    }
     <div
-      class="pointer-events-none absolute inset-0 flex select-none items-center justify-end overflow-hidden pr-4 opacity-[0.035] lg:pr-12"
+      class="pointer-events-none absolute inset-0 flex items-center justify-end overflow-hidden pr-4 opacity-[0.035] select-none lg:pr-12"
       aria-hidden="true"
     >
       <span
-        class="text-primary font-black leading-none"
+        class="text-primary leading-none font-black"
         style="font-size: clamp(12rem, 32vw, 26rem);"
       >
         20%
@@ -313,7 +338,6 @@ const mobileNavItems = [
     <div class="relative z-10 flex min-h-screen items-center">
       <div class="mx-auto w-full max-w-7xl px-4 py-28 lg:pt-36 lg:pb-16">
         <div class="flex max-w-2xl flex-col gap-7">
-
           {/* Badge dorado — evoca el Día del Padre */}
           <div class="inline-flex items-center gap-3">
             <div class="h-px w-10 animate-pulse bg-amber-400"></div>
@@ -341,18 +365,19 @@ const mobileNavItems = [
             <span class="text-primary font-bold">20 % de descuento</span> en mensualidades
             de{" "}
             <span class="font-semibold text-white">Pesas</span> y{" "}
-            <span class="font-semibold text-white">Spinning</span>.
-            Solo durante junio, solo para papás.
+            <span class="font-semibold text-white">Spinning</span>. Solo durante
+            junio, solo para papás.
           </p>
 
           {/* Precios rápidos — vista previa del ahorro antes de bajar */}
           <div class="flex flex-wrap gap-3">
-
             {/* Precio Pesas */}
             <div
               class="rounded-xl border border-zinc-700 bg-zinc-900/70 px-4 py-3 backdrop-blur-sm"
             >
-              <p class="text-xs font-medium tracking-wider text-zinc-500 uppercase">
+              <p
+                class="text-xs font-medium tracking-wider text-zinc-500 uppercase"
+              >
                 Pesas
               </p>
               <div class="mt-1 flex items-baseline gap-2">
@@ -365,7 +390,9 @@ const mobileNavItems = [
             <div
               class="rounded-xl border border-zinc-700 bg-zinc-900/70 px-4 py-3 backdrop-blur-sm"
             >
-              <p class="text-xs font-medium tracking-wider text-zinc-500 uppercase">
+              <p
+                class="text-xs font-medium tracking-wider text-zinc-500 uppercase"
+              >
                 Spinning
               </p>
               <div class="mt-1 flex items-baseline gap-2">
@@ -386,7 +413,6 @@ const mobileNavItems = [
 
           {/* CTAs */}
           <div class="flex flex-col gap-4 pt-2 sm:flex-row">
-
             {/* CTA principal — baja a las tarjetas */}
             <a
               href="#planes-papa"
@@ -409,17 +435,18 @@ const mobileNavItems = [
               <ArrowAnimation class="size-5" />
             </a>
           </div>
-
         </div>
       </div>
     </div>
   </section>
 
-  {/* ═══════════════════════════════════════════════════════
+  {
+    /* ═══════════════════════════════════════════════════════
       BANNER — Condiciones de la promo
       Tres píldoras: documentos requeridos, fechas, quién aplica
-      ═══════════════════════════════════════════════════════ */}
-  <div class="border-y border-primary/10 bg-zinc-950/90 backdrop-blur-sm">
+      ═══════════════════════════════════════════════════════ */
+  }
+  <div class="border-primary/10 border-y bg-zinc-950/90 backdrop-blur-sm">
     <div class="mx-auto max-w-5xl px-4 py-5">
       <div
         class="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-8 md:gap-14"
@@ -450,13 +477,46 @@ const mobileNavItems = [
   </div>
 
   {/* ═══════════════════════════════════════════════════════
-      SECCIÓN 2 — PLANES CON 20 % OFF
+      SECCIÓN 2 — VIDEO DE LA PROMO
+      Mismo layout que SocialBest: px-0 + flex con overflow-hidden
+      para que el video se vea igual que en el carrusel del home
+      ═══════════════════════════════════════════════════════ */}
+  <SectionContainer class="px-0 py-14 md:py-20">
+    {/* Título de la sección */}
+    <div class="mb-8 flex items-center justify-center gap-3 px-4">
+      <div class="h-px w-8 bg-amber-400/60"></div>
+      <span class="text-xs font-semibold tracking-widest text-amber-400 uppercase">
+        Mira cómo funciona
+      </span>
+      <div class="h-px w-8 bg-amber-400/60"></div>
+    </div>
+
+    <div
+      class="-mr-4 flex snap-x snap-mandatory justify-center overflow-hidden pr-4 md:mr-0 md:pr-0"
+    >
+      <TiktokVideo
+        videoId="7649840305780313361"
+        thumbnailUrl="/img/thumbnails/tpapa.webp"
+        title="Promo Día del Padre — 20% de descuento en Pesas y Spinning"
+      />
+    </div>
+  </SectionContainer>
+
+  {/* ═══════════════════════════════════════════════════════
+      SECCIÓN 3 — EVENTO ESPECIAL: EL BOTE CHALLENGE
+      Componente autocontenido — eliminar línea de abajo para quitar el evento
+      ═══════════════════════════════════════════════════════ */}
+  <PromoEventoBote />
+
+  {
+    /* ═══════════════════════════════════════════════════════
+      SECCIÓN 4 — PLANES CON 20 % OFF
       Tarjetas con imagen de cabecera, precios comparados,
       lista de beneficios y CTA individual por plan
-      ═══════════════════════════════════════════════════════ */}
+      ═══════════════════════════════════════════════════════ */
+  }
   <SectionContainer class="py-20 md:py-28">
     <div id="planes-papa" class="mx-auto max-w-7xl">
-
       {/* Encabezado de sección */}
       <div class="mb-14 text-center">
         <span
@@ -469,15 +529,15 @@ const mobileNavItems = [
           <span class="text-primary">20 % Off</span>
         </h2>
         <p class="mx-auto mt-4 max-w-xl text-zinc-400">
-          Elige el área que más te guste. Ambas promos incluyen inscripción gratis
-          y un mes completo de entrenamiento al mejor precio.
+          Elige el área que más te guste. Ambas promos incluyen inscripción
+          gratis y un mes completo de entrenamiento al mejor precio.
         </p>
       </div>
 
       {/* Countdown hasta el 30 de junio */}
       <div class="mb-12 flex justify-center">
         <div
-          class="border-primary/20 bg-zinc-900/60 rounded-2xl border px-8 py-5 backdrop-blur-sm"
+          class="border-primary/20 rounded-2xl border bg-zinc-900/60 px-8 py-5 backdrop-blur-sm"
         >
           <p
             class="text-primary mb-4 text-center text-xs font-semibold tracking-widest uppercase"
@@ -496,11 +556,10 @@ const mobileNavItems = [
               class:list={[
                 "group relative flex flex-col overflow-hidden rounded-3xl border backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl",
                 plan.highlight
-                  ? "border-primary bg-zinc-900/80 hover:shadow-primary/20"
-                  : "border-zinc-700/60 bg-zinc-900/60 hover:border-primary/50 hover:shadow-primary/10",
+                  ? "border-primary hover:shadow-primary/20 bg-zinc-900/80"
+                  : "hover:border-primary/50 hover:shadow-primary/10 border-zinc-700/60 bg-zinc-900/60",
               ]}
             >
-
               {/* Imagen del área del gym con overlay degradado */}
               <div class="relative h-44 w-full overflow-hidden">
                 <img
@@ -527,14 +586,19 @@ const mobileNavItems = [
 
               {/* Cuerpo de la tarjeta */}
               <div class="flex flex-1 flex-col p-7">
-
                 {/* Nombre y subtítulo del servicio */}
-                <h3 class="mb-1 text-2xl font-black text-white">{plan.servicio}</h3>
-                <p class="text-primary mb-5 text-sm font-semibold">{plan.subtitulo}</p>
+                <h3 class="mb-1 text-2xl font-black text-white">
+                  {plan.servicio}
+                </h3>
+                <p class="text-primary mb-5 text-sm font-semibold">
+                  {plan.subtitulo}
+                </p>
 
                 {/* Comparación de precios: tachado + nuevo */}
                 <div class="mb-1 flex items-baseline gap-3">
-                  <span class="text-lg text-zinc-500 line-through">{plan.precioOriginal}</span>
+                  <span class="text-lg text-zinc-500 line-through">
+                    {plan.precioOriginal}
+                  </span>
                   <span
                     class:list={[
                       "text-5xl font-black tabular-nums",
@@ -584,7 +648,7 @@ const mobileNavItems = [
                     "block w-full rounded-xl py-3.5 text-center text-sm font-bold transition-all duration-300 hover:scale-[1.02]",
                     plan.highlight
                       ? "bg-primary text-black hover:bg-[#c5eb00]"
-                      : "border-primary/50 text-primary border bg-primary/10 hover:bg-primary/20",
+                      : "border-primary/50 text-primary bg-primary/10 hover:bg-primary/20 border",
                   ]}
                 >
                   Inscribirme con este plan
@@ -597,22 +661,25 @@ const mobileNavItems = [
 
       {/* Nota legal / condiciones resumidas */}
       <p class="mt-8 text-center text-xs text-zinc-600">
-        ✦ Inscripción gratis siempre &nbsp;·&nbsp; Válido al presentar identificación oficial &nbsp;·&nbsp; Promo hasta el 30/06/2026 &nbsp;·&nbsp; Solo para papás
+        ✦ Inscripción gratis siempre &nbsp;·&nbsp; Válido al presentar
+        identificación oficial &nbsp;·&nbsp; Promo hasta el 30/06/2026
+        &nbsp;·&nbsp; Solo para papás
       </p>
     </div>
   </SectionContainer>
 
-  {/* ═══════════════════════════════════════════════════════
+  {
+    /* ═══════════════════════════════════════════════════════
       SECCIÓN 3 — CÓMO CANJEAR
       Tres pasos numerados sobre fondo parallax
-      ═══════════════════════════════════════════════════════ */}
+      ═══════════════════════════════════════════════════════ */
+  }
   <SectionContainer
     backgroundImage="linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.82)), url('/fondofijo.webp')"
     fixedBackground={true}
     class="py-20 md:py-24"
   >
     <div class="mx-auto max-w-7xl">
-
       {/* Encabezado */}
       <div class="mb-14 text-center">
         <span
@@ -634,8 +701,10 @@ const mobileNavItems = [
           pasos.map((paso) => (
             <div class="group text-center transition-transform duration-300 hover:-translate-y-2">
               {/* Número en círculo con color primario */}
-              <div class="bg-primary mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-primary/40">
-                <span class="text-3xl font-black text-black">{paso.numero}</span>
+              <div class="bg-primary group-hover:shadow-primary/40 mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl">
+                <span class="text-3xl font-black text-black">
+                  {paso.numero}
+                </span>
               </div>
               <h3 class="mb-3 text-lg font-black text-white">{paso.titulo}</h3>
               <p class="leading-relaxed text-zinc-400">{paso.descripcion}</p>
@@ -646,13 +715,14 @@ const mobileNavItems = [
     </div>
   </SectionContainer>
 
-  {/* ═══════════════════════════════════════════════════════
+  {
+    /* ═══════════════════════════════════════════════════════
       SECCIÓN 4 — PROMOCIONES PERMANENTES
       Disponibles todo el año, sin fecha límite
-      ═══════════════════════════════════════════════════════ */}
+      ═══════════════════════════════════════════════════════ */
+  }
   <SectionContainer class="py-20 md:py-28">
     <div id="promociones-permanentes" class="mx-auto max-w-7xl">
-
       {/* Encabezado */}
       <div class="mb-14 text-center">
         <span
@@ -664,7 +734,8 @@ const mobileNavItems = [
           Disponibles <span class="text-zinc-400">Todo el Año</span>
         </h2>
         <p class="mx-auto mt-4 max-w-xl text-zinc-400">
-          Sin trucos, sin letra pequeña. Estas promociones siempre están activas para ti.
+          Sin trucos, sin letra pequeña. Estas promociones siempre están activas
+          para ti.
         </p>
       </div>
 
@@ -672,8 +743,7 @@ const mobileNavItems = [
       <div class="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
         {
           promosPermanentes.map((promo) => (
-            <article class="group border-zinc-800 hover:border-primary/30 hover:shadow-primary/5 relative overflow-hidden rounded-3xl border bg-zinc-900/60 p-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-900/80 hover:shadow-xl">
-
+            <article class="group hover:border-primary/30 hover:shadow-primary/5 relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/60 p-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-900/80 hover:shadow-xl">
               {/* Badge */}
               <div class="absolute top-5 right-5">
                 <span class="rounded-full border border-zinc-700 bg-zinc-800 px-3 py-1 text-xs font-semibold tracking-wide text-zinc-400 uppercase">
@@ -687,12 +757,13 @@ const mobileNavItems = [
               </div>
 
               <h3 class="mb-3 text-xl font-black text-white">{promo.titulo}</h3>
-              <p class="mb-5 leading-relaxed text-zinc-400">{promo.descripcion}</p>
+              <p class="mb-5 leading-relaxed text-zinc-400">
+                {promo.descripcion}
+              </p>
 
               {/* Detalle con línea animada */}
               <div class="inline-flex items-center gap-2">
-                <div class="bg-primary h-px w-6 transition-all duration-300 group-hover:w-10">
-                </div>
+                <div class="bg-primary h-px w-6 transition-all duration-300 group-hover:w-10"></div>
                 <span class="text-primary text-xs font-bold tracking-wide uppercase">
                   {promo.detalle}
                 </span>
@@ -704,23 +775,26 @@ const mobileNavItems = [
     </div>
   </SectionContainer>
 
-  {/* ═══════════════════════════════════════════════════════
+  {
+    /* ═══════════════════════════════════════════════════════
       SECCIÓN 5 — FAQ
       Preguntas frecuentes específicas de esta promo
-      ═══════════════════════════════════════════════════════ */}
+      ═══════════════════════════════════════════════════════ */
+  }
   <div id="faq">
     <FAQ items={faqItems} />
   </div>
 
-  {/* ═══════════════════════════════════════════════════════
+  {
+    /* ═══════════════════════════════════════════════════════
       SECCIÓN 6 — CTA FINAL
       Tarjeta con imagen de fondo, overlay oscuro-verde,
       headline emocional y botones de acción
-      ═══════════════════════════════════════════════════════ */}
+      ═══════════════════════════════════════════════════════ */
+  }
   <SectionContainer class="py-20 md:py-28">
     <div class="mx-auto max-w-4xl">
       <div class="relative overflow-hidden rounded-3xl">
-
         {/* Imagen de fondo */}
         <img
           src="/fondo2.webp"
@@ -739,7 +813,6 @@ const mobileNavItems = [
         <div
           class="border-primary/25 relative z-10 rounded-3xl border p-10 text-center md:p-16"
         >
-
           {/* Ícono central */}
           <div
             class="bg-primary/15 mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl"
@@ -761,9 +834,12 @@ const mobileNavItems = [
           </h2>
 
           {/* Descripción */}
-          <p class="mx-auto mb-8 max-w-xl text-lg leading-relaxed text-zinc-300">
-            20 % de descuento en Pesas o Spinning durante todo el mes. Inscríbete
-            antes del 30 de junio y empieza a entrenar al mejor precio.
+          <p
+            class="mx-auto mb-8 max-w-xl text-lg leading-relaxed text-zinc-300"
+          >
+            20 % de descuento en Pesas o Spinning durante todo el mes.
+            Inscríbete antes del 30 de junio y empieza a entrenar al mejor
+            precio.
           </p>
 
           {/* Botones de acción */}
@@ -773,7 +849,7 @@ const mobileNavItems = [
             {/* CTA primario */}
             <a
               href="/contacto"
-              class="bg-primary hover:bg-[#c5eb00] inline-flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 text-lg font-black text-black shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/30 sm:w-auto"
+              class="bg-primary hover:shadow-primary/30 inline-flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 text-lg font-black text-black shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#c5eb00] hover:shadow-xl sm:w-auto"
             >
               Aprovechar el Descuento
             </a>
@@ -789,7 +865,8 @@ const mobileNavItems = [
 
           {/* Condiciones resumidas al pie */}
           <p class="mt-6 text-sm text-zinc-500">
-            ✦ Inscripción gratis siempre &nbsp;·&nbsp; Promo válida hasta el 30/06/2026 &nbsp;·&nbsp; Solo para papás
+            ✦ Inscripción gratis siempre &nbsp;·&nbsp; Promo válida hasta el
+            30/06/2026 &nbsp;·&nbsp; Solo para papás
           </p>
         </div>
       </div>

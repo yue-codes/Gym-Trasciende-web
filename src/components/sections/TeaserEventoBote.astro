@@ -1,0 +1,90 @@
+---
+/**
+ * TeaserEventoBote.astro
+ *
+ * Banner compacto del "El Bote Challenge" para el home.
+ * Lleva al usuario a /promociones donde ve el evento completo.
+ *
+ * Para eliminar el teaser del home: quitar <TeaserEventoBote /> de
+ * src/pages/index.astro (este componente no toca nada más).
+ */
+
+import SectionContainer from "@components/layout/SectionContainer.astro";
+import ArrowAnimation from "@components/icons/ArrowAnimation.astro";
+---
+
+{/* ═══════════════════════════════════════════════════════
+    TEASER — El Bote Challenge
+    Banner clicable que lleva a /promociones
+    El "22" decorativo refuerza la fecha sin ocupar espacio
+    ═══════════════════════════════════════════════════════ */}
+<SectionContainer class="py-10 md:py-12">
+  <div class="mx-auto max-w-7xl">
+
+    {/* Todo el banner es un enlace para facilitar el click en móvil */}
+    <a
+      href="/promociones"
+      class="group relative flex flex-col items-start gap-5 overflow-hidden rounded-2xl border border-dashed border-primary/40 bg-zinc-900/60 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/70 hover:bg-zinc-900/80 sm:flex-row sm:items-center sm:justify-between md:p-8"
+      aria-label="Ver El Bote Challenge en la página de promociones"
+    >
+
+      {/* Decorativo: "22" grande translúcido — alude a la fecha del evento */}
+      <div
+        class="pointer-events-none absolute top-0 right-6 select-none overflow-hidden opacity-[0.04]"
+        aria-hidden="true"
+      >
+        <span
+          class="text-primary font-black leading-none"
+          style="font-size: 9rem;"
+        >
+          22
+        </span>
+      </div>
+
+      {/* Ícono + información del evento */}
+      <div class="flex items-center gap-4">
+
+        {/* Ícono */}
+        <div
+          class="bg-primary/10 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-2xl transition-transform duration-300 group-hover:scale-110"
+        >
+          🧴
+        </div>
+
+        {/* Texto */}
+        <div>
+          {/* Badges de fecha y tipo */}
+          <div class="mb-1.5 flex flex-wrap items-center gap-2">
+            <span
+              class="bg-primary rounded-full px-2.5 py-0.5 text-xs font-black text-black uppercase"
+            >
+              22 de Junio
+            </span>
+            <span
+              class="rounded-full border border-cyan-400/40 bg-cyan-400/10 px-2.5 py-0.5 text-xs font-semibold text-cyan-400 uppercase"
+            >
+              Evento Especial
+            </span>
+          </div>
+
+          {/* Título */}
+          <h3 class="text-lg font-black text-white">El Bote Challenge 🏆</h3>
+
+          {/* Descripción breve */}
+          <p class="mt-0.5 text-sm text-zinc-400">
+            Trae el bote más random y gana{" "}
+            <span class="font-bold text-white">50 % de descuento</span>
+          </p>
+        </div>
+      </div>
+
+      {/* Flecha CTA — se mueve en hover gracias a ArrowAnimation */}
+      <div
+        class="flex shrink-0 items-center gap-2 text-sm font-semibold text-primary transition-all duration-300 group-hover:gap-3"
+      >
+        <span>Ver la promo</span>
+        <ArrowAnimation class="size-4" />
+      </div>
+    </a>
+  </div>
+</SectionContainer>

@@ -1,0 +1,95 @@
+---
+/**
+ * InstagramVideo.astro
+ *
+ * Componente de fachada para videos/posts de Instagram.
+ * Mismo patrón de rendimiento que TiktokVideo: muestra una thumbnail
+ * estática y solo carga el iframe de Instagram cuando el usuario hace clic.
+ * Costo de red hasta ese momento: cero.
+ *
+ * Props:
+ *   postId       — Shortcode del post/reel (extraído de la URL de Instagram)
+ *   thumbnailUrl — Ruta a imagen local de preview en /public/
+ *   title        — Texto accesible del video
+ */
+
+import Icon from "@components/ui/Icon.astro";
+
+interface Props {
+  postId: string;
+  thumbnailUrl: string;
+  title: string;
+}
+
+const { postId, thumbnailUrl, title } = Astro.props;
+---
+
+<instagram-video
+  class="relative h-142.5 w-80 shrink-0 cursor-pointer snap-center rounded-2xl bg-black bg-cover bg-no-repeat bg-center transition-[background-size] hover:bg-size-[105%]"
+  postid={postId}
+  thumbnailurl={thumbnailUrl}
+  data-title={title}
+  aria-label="Reproducir video de Instagram"
+  role="button"
+  tabindex="0"
+>
+  {/* Botón de play — mismo estilo que TiktokVideo */}
+  <div
+    data-play-btn
+    class="absolute right-6 bottom-6 rounded-full bg-white p-4 pl-4.5 transition-transform duration-300 hover:scale-110"
+    title={title}
+  >
+    <Icon name="play" class="text-primary" />
+  </div>
+</instagram-video>
+
+<script>
+  class InstagramVideo extends HTMLElement {
+    connectedCallback() {
+      // Aplicar thumbnail como fondo antes de que el usuario interactúe
+      const thumbnailUrl = this.getAttribute("thumbnailurl");
+      this.style.backgroundImage = `url(${thumbnailUrl})`;
+
+      this.addEventListener("click", this.activateVideo);
+      this.addEventListener("keydown", this.handleKeyPress);
+    }
+
+    disconnectedCallback() {
+      // Limpiar listeners cuando el elemento se elimina del DOM
+      this.removeEventListener("click", this.activateVideo);
+      this.removeEventListener("keydown", this.handleKeyPress);
+    }
+
+    activateVideo = () => {
+      // Quitar thumbnail y botón de play
+      this.style.backgroundImage = "unset";
+      this.querySelector("[data-play-btn]")?.remove();
+
+      // Insertar iframe de Instagram y enfocar
+      const iframe = this.createIframe();
+      this.append(iframe);
+      iframe.focus();
+    };
+
+    handleKeyPress = (event: KeyboardEvent) => {
+      // Accesibilidad: activar con teclado
+      if (event.code === "Enter" || event.code === "Space") {
+        this.activateVideo();
+      }
+    };
+
+    createIframe = () => {
+      const iframe = document.createElement("iframe");
+      iframe.width = "320";
+      iframe.height = "570";
+      iframe.classList.add("rounded-2xl", "w-full", "h-full");
+      iframe.title = this.getAttribute("data-title")!;
+      // URL de embed de Instagram: no requiere login para posts públicos
+      iframe.src = `https://www.instagram.com/p/${this.getAttribute("postid")}/embed/`;
+      iframe.allowFullscreen = true;
+      return iframe;
+    };
+  }
+
+  customElements.define("instagram-video", InstagramVideo);
+</script>

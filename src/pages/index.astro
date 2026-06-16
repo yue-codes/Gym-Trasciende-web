@@ -10,6 +10,8 @@ import SectionContainer from "@components/layout/SectionContainer.astro";
 import ScheduleSection from "@components/sections/ScheduleSection.astro";
 import ServiceBento from "@components/services/ServiceBento.astro";
 import MobileBottomNav from "@components/layout/MobileBottomNav.tsx";
+import TeaserEventoBote from "@components/sections/TeaserEventoBote.astro";
+import StickyBannerBote from "@components/sections/StickyBannerBote.astro";
 
 // Horarios del gimnasio
 const schedule = [
@@ -58,10 +60,18 @@ const mobileNavItems = [
   description="¿Buscas gimnasio en Ocotlán? En Trasciende Gym te ofrecemos pesas, spinning y nutrición para todo nivel. Abierto desde las 5 am. ¡Empieza tu cambio hoy!"
 >
   <Hero />
+  {
+    /* Sticky bar del Bote Challenge — eliminar esta línea para quitar del home */
+  }
+  <StickyBannerBote />
 
   <ServiceBento />
   <TrustMetrics />
   <PricingPlan />
+  {
+    /* Teaser del Bote Challenge — eliminar esta línea para quitar el banner del home */
+  }
+  <TeaserEventoBote />
   <SectionContainer class="py-16 md:py-20">
     <div class="mx-auto max-w-2xl">
       <ScheduleSection schedule={schedule} />

@@ -1,0 +1,111 @@
+---
+/**
+ * StickyBannerBote.astro
+ *
+ * Barra fija en la parte inferior del home que anuncia El Bote Challenge.
+ * Siempre aparece cuando el usuario carga el home (sin localStorage).
+ * El botón ✕ la elimina del DOM solo durante la sesión actual.
+ *
+ * Posicionamiento:
+ *   — Móvil:   bottom-16 (64px) para quedar encima del MobileBottomNav (z-50)
+ *   — Desktop: bottom-0
+ *   — z-index: z-40 (por debajo del nav pero sobre el contenido)
+ *
+ * Enlace directo: /promociones#bote-challenge lleva al evento específico.
+ *
+ * Para eliminar del home: quitar <StickyBannerBote /> de src/pages/index.astro
+ */
+---
+
+{
+  /* ═══════════════════════════════════════════════════════
+    STICKY BAR — El Bote Challenge
+    Animación slideUp al entrar para no sorprender al usuario
+    ═══════════════════════════════════════════════════════ */
+}
+<div
+  id="sticky-bote-banner"
+  class="fixed right-0 bottom-16 left-0 z-40 md:bottom-0"
+  role="region"
+  aria-label="Evento especial: El Bote Challenge"
+  style="animation: stickySlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;"
+>
+  {/* Franja con fondo oscuro semitransparente y borde superior primario */}
+  <div class="border-primary/30 border-t bg-zinc-950/95 backdrop-blur-md">
+    <div
+      class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6"
+    >
+      {/* ── Lado izquierdo: ícono + texto ── */}
+      <div class="flex items-center gap-3 overflow-hidden">
+        {/* Ícono del evento */}
+        <span class="shrink-0 text-xl">🧴</span>
+
+        {/* Texto — truncado en pantallas muy pequeñas */}
+        <div class="min-w-0">
+          <p class="truncate text-sm font-black text-white">
+            El Bote Challenge
+            <span class="text-primary ml-1">· 22 de Junio</span>
+          </p>
+          <p class="hidden truncate text-xs text-zinc-400 sm:block">
+            Trae el bote más random y gana 50 % de descuento
+          </p>
+        </div>
+      </div>
+
+      {/* ── Lado derecho: CTA + botón cerrar ── */}
+      <div class="flex shrink-0 items-center gap-2">
+        {/* Enlace directo al evento en /promociones */}
+        <a
+          href="/promociones#bote-challenge"
+          class="bg-primary rounded-lg px-4 py-1.5 text-xs font-black text-black transition-all duration-200 hover:scale-105 hover:bg-[#c5eb00]"
+        >
+          Ver el reto
+        </a>
+
+        {/* Botón cerrar — elimina la barra del DOM en esta sesión */}
+        <button
+          id="close-sticky-bote"
+          class="flex h-7 w-7 items-center justify-center rounded-full text-zinc-500 transition-colors duration-200 hover:bg-zinc-800 hover:text-white"
+          aria-label="Cerrar este anuncio"
+        >
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M1 1l10 10M11 1L1 11"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Animación de entrada desde abajo */
+  @keyframes stickySlideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  // Cerrar la barra al hacer clic en ✕ — solo para esta sesión
+  document
+    .getElementById("close-sticky-bote")
+    ?.addEventListener("click", () => {
+      document.getElementById("sticky-bote-banner")?.remove();
+    });
+</script>
