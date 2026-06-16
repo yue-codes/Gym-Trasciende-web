@@ -1,14 +1,15 @@
 ---
 /**
- * Promociones - Página de Promociones
+ * Promociones — Día del Padre · Junio 2026
  *
  * ESTRUCTURA:
- * 1. Hero - Promo Spinning Marzo 2026
- * 2. Promoción Temporal — Spinning de Marzo (Dúo y Grupo)
- * 3. Promociones Permanentes — Sin fecha límite
- * 4. Cómo Aprovechar — 3 pasos
- * 5. FAQ — Preguntas frecuentes
- * 6. CTA — Final
+ * 1. Hero          — Slogan "Papá este mes te toca a ti" + precios rápidos + CTA
+ * 2. Banner        — Condiciones (solo papás · fechas · documentos)
+ * 3. Planes        — Tarjetas Pesas ($304) y Spinning ($400) con 20 % off
+ * 4. Cómo Canjear  — 3 pasos simples con fondo parallax
+ * 5. Permanentes   — Inscripción gratis + Cumpleaños 10 %
+ * 6. FAQ           — Preguntas frecuentes
+ * 7. CTA Final     — Llamada a la acción con imagen de fondo
  */
 
 import Layout from "@layouts/Layout.astro";
@@ -20,7 +21,7 @@ import ArrowAnimation from "@components/icons/ArrowAnimation.astro";
 import MobileBottomNav from "@components/layout/MobileBottomNav.tsx";
 
 // ═══════════════════════════════════════════════════════════════
-//  ARCHIVO — Promos de Enero/Febrero 2026 (guardadas para futuro uso)
+//  ARCHIVO — Promos Enero / Febrero 2026
 // ═══════════════════════════════════════════════════════════════
 /*
 const promosFebrero = [
@@ -30,13 +31,7 @@ const promosFebrero = [
     price: "$350",
     priceDetail: "por persona/mes",
     icon: "💑",
-    features: [
-      "Inscripción incluida",
-      "2 personas",
-      "Acceso completo",
-      "Asesoría personalizada",
-      "Horarios flexibles",
-    ],
+    features: ["Inscripción incluida", "2 personas", "Acceso completo", "Asesoría personalizada", "Horarios flexibles"],
     badge: "Popular",
     isTemporary: true,
   },
@@ -46,13 +41,7 @@ const promosFebrero = [
     price: "$340",
     priceDetail: "por persona/mes",
     icon: "👥",
-    features: [
-      "Inscripción incluida",
-      "3 o más personas",
-      "Acceso completo",
-      "Asesoría personalizada",
-      "Horarios flexibles",
-    ],
+    features: ["Inscripción incluida", "3 o más personas", "Acceso completo", "Asesoría personalizada", "Horarios flexibles"],
     badge: "Mejor Ahorro",
     isTemporary: true,
   },
@@ -62,13 +51,7 @@ const promosFebrero = [
     price: "$340",
     priceDetail: "por persona/mes",
     icon: "👨‍👩‍👧",
-    features: [
-      "Inscripción incluida",
-      "3 o más familiares",
-      "Acceso completo",
-      "Asesoría personalizada",
-      "Horarios flexibles",
-    ],
+    features: ["Inscripción incluida", "3 o más familiares", "Acceso completo", "Asesoría personalizada", "Horarios flexibles"],
     badge: "Familia",
     isTemporary: true,
   },
@@ -76,8 +59,9 @@ const promosFebrero = [
 */
 
 // ═══════════════════════════════════════════════════════════════
-//  PROMO TEMPORAL — Spinning Marzo 2026
+//  ARCHIVO — Promo Spinning Marzo 2026
 // ═══════════════════════════════════════════════════════════════
+/*
 const promosMarzoPlan = [
   {
     id: 1,
@@ -88,13 +72,7 @@ const promosMarzoPlan = [
     icon: "🚴‍♀️🚴",
     badge: "Pareja",
     highlight: false,
-    features: [
-      "Inscripción sin costo",
-      "2 personas inscritas juntas",
-      "Clase de Spinning completa",
-      "Acceso al área de spinning",
-      "Horarios flexibles",
-    ],
+    features: ["Inscripción sin costo", "2 personas inscritas juntas", "Clase de Spinning completa", "Acceso al área de spinning", "Horarios flexibles"],
     savings: "Ahorra vs precio individual",
   },
   {
@@ -106,210 +84,315 @@ const promosMarzoPlan = [
     icon: "🚴‍♂️🚴‍♀️🚴",
     badge: "Mejor Precio",
     highlight: true,
-    features: [
-      "Inscripción sin costo",
-      "3 o más personas juntas",
-      "Clase de Spinning completa",
-      "Acceso al área de spinning",
-      "Horarios flexibles",
-    ],
+    features: ["Inscripción sin costo", "3 o más personas juntas", "Clase de Spinning completa", "Acceso al área de spinning", "Horarios flexibles"],
     savings: "Máximo ahorro del mes",
+  },
+];
+*/
+
+// ═══════════════════════════════════════════════════════════════
+//  PROMO TEMPORAL — Día del Padre · Junio 2026
+//  20 % de descuento en mensualidades de Pesas y Spinning
+//  Precios base: Pesas $380 / Spinning $500
+//  Precios promo: Pesas $304 ($380 × 0.80) / Spinning $400 ($500 × 0.80)
+//  Solo para papás con identificación oficial · Válido 1–30 junio 2026
+// ═══════════════════════════════════════════════════════════════
+const promosJunio = [
+  {
+    id: 1,
+    servicio: "Fuerza y Pesas",
+    subtitulo: "Área completa con asesoría",
+    precioOriginal: "$380",
+    precioPromo: "$304",   // $380 × 0.80
+    ahorro: "$76",         // $380 × 0.20
+    icon: "🏋️",
+    imagen: "/bento-info/bentopesas.webp",
+    highlight: false,
+    features: [
+      "Asesoría personalizada en rutinas",
+      "Acceso completo al área",
+      "Lun–Vie 5am–10pm",
+      "Sáb 6:00am–5pm",
+      "Dom 12pm–4pm",
+    ],
+  },
+  {
+    id: 2,
+    servicio: "Clases de Spinning",
+    subtitulo: "Instructor certificado incluido",
+    precioOriginal: "$500",
+    precioPromo: "$400",   // $500 × 0.80
+    ahorro: "$100",        // $500 × 0.20
+    icon: "🚴‍♂️",
+    imagen: "/bento-info/bentospining.webp",
+    highlight: true,
+    features: [
+      "Cupo limitado garantizado",
+      "Lun–Vie 6am–7am / 7am–8am",
+      "Lun–Vie 6pm–7pm / 7pm–8pm",
+      "Instructor certificado",
+      "Técnica y postura incluidas",
+    ],
   },
 ];
 
 // ═══════════════════════════════════════════════════════════════
-//  PROMOCIONES PERMANENTES
+//  CONDICIONES — Datos para el banner informativo
+// ═══════════════════════════════════════════════════════════════
+const condiciones = [
+  {
+    emoji: "📋",
+    texto: "Muestra una",
+    destacado: "foto con tu hij@",
+  },
+  {
+    emoji: "📅",
+    texto: "Válido del",
+    destacado: "1 al 30 de junio",
+  },
+  {
+    emoji: "👨‍💪",
+    texto: "Solo para",
+    destacado: "papás",
+  },
+];
+
+// ═══════════════════════════════════════════════════════════════
+//  PASOS — Cómo canjear el descuento de Día del Padre
+// ═══════════════════════════════════════════════════════════════
+const pasos = [
+  {
+    numero: 1,
+    titulo: "Visítanos o escríbenos",
+    descripcion:
+      "Acércate al gym o contáctanos por redes sociales durante junio. Te atendemos con gusto.",
+  },
+  {
+    numero: 2,
+    titulo: "Acredita que eres papá",
+    descripcion:
+      "Muéstranos una foto tuya con tu hijo o hija y listo — con eso aplicamos el descuento.",
+  },
+  {
+    numero: 3,
+    titulo: "Activa tu 20 % off",
+    descripcion:
+      "El descuento se aplica directo en tu mensualidad de Pesas o Spinning. ¡Así de fácil, papá!",
+  },
+];
+
+// ═══════════════════════════════════════════════════════════════
+//  PROMOCIONES PERMANENTES — Sin fecha límite
 // ═══════════════════════════════════════════════════════════════
 const promosPermanentes = [
   {
     id: 1,
     icon: "🎁",
-    title: "Inscripción Gratis",
-    description:
-      "Sin costo de inscripción todo el año, para cualquier plan que elijas. Sin letra pequeña, solo pagas tu mensualidad.",
+    titulo: "Inscripción Gratis",
+    descripcion:
+      "Sin costo de inscripción todo el año para cualquier plan. Sin letra pequeña, solo pagas tu mensualidad.",
     badge: "Todo el Año",
-    detail: "¡Ahorras $200!",
+    detalle: "¡Ahorras $200!",
   },
   {
     id: 2,
     icon: "🎂",
-    title: "Cumpleaños 10% Off",
-    description:
-      "Descuento del 10% en tu mensualidad durante todo tu mes de cumpleaños. Presenta identificación oficial y disfruta tu beneficio anual.",
+    titulo: "Cumpleaños 10 % Off",
+    descripcion:
+      "Descuento del 10 % en tu mensualidad durante todo tu mes de cumpleaños. Presenta identificación oficial y disfruta.",
     badge: "Especial",
-    detail: "Cada año, tu mes",
+    detalle: "Cada año, tu mes",
   },
 ];
 
 // ═══════════════════════════════════════════════════════════════
-//  FAQ
+//  FAQ — Preguntas frecuentes sobre la promo de Día del Padre
 // ═══════════════════════════════════════════════════════════════
 const faqItems = [
   {
-    question: "¿Hasta cuándo es válida la promo de Spinning de Marzo?",
+    question: "¿Quiénes pueden aprovechar esta promo?",
     answer:
-      "La promo de Spinning de Marzo está disponible durante todo el mes de marzo 2026. Debes inscribirte antes del 31 de marzo para aprovechar los precios especiales.",
+      "Es exclusiva para papás. Solo necesitas mostrar una foto tuya con tu hijo o hija — con eso acreditamos que eres papá y aplicamos el descuento.",
   },
   {
-    question: "¿Quiénes pueden participar en la promo de grupo?",
+    question: "¿Aplica para nuevas inscripciones y renovaciones?",
     answer:
-      "Pueden inscribirse parejas, amigos o cualquier grupo de 2 o más personas. Lo importante es que se inscriban al mismo tiempo para aplicar la promo correspondiente.",
+      "Sí, el 20 % de descuento aplica tanto si te inscribes por primera vez como si eres miembro vigente que renueva su mensualidad durante el mes de junio.",
   },
   {
-    question: "¿Cuál es la diferencia entre la promo Dúo y Grupo?",
+    question: "¿Puedo combinar esta promo con el descuento de cumpleaños?",
     answer:
-      "La promo Dúo aplica cuando se inscriben exactamente 2 personas juntas ($450 c/u). La promo Grupo aplica con 3 o más personas inscritas al mismo tiempo ($420 c/u), ofreciendo el mayor ahorro.",
+      "Las promociones temporales no son acumulables entre sí. Sin embargo, la inscripción siempre es gratis sin importar el plan que elijas.",
   },
   {
-    question: "¿Puedo combinar la promo de Spinning con el descuento de cumpleaños?",
+    question: "¿Hasta cuándo está disponible?",
     answer:
-      "Las promociones temporales de Spinning de Marzo no son acumulables con el descuento de cumpleaños. Sin embargo, la inscripción gratis está siempre incluida en todos los planes.",
+      "La promo de Día del Padre está disponible del 1 al 30 de junio de 2026. Debes inscribirte o renovar dentro de ese período para aprovechar el precio especial.",
   },
   {
-    question: "¿La inscripción siempre es gratis?",
+    question: "¿Puedo elegir entre Pesas y Spinning?",
     answer:
-      "¡Sí! La inscripción es completamente gratis durante todo el año, sin importar el plan que elijas. Es nuestro compromiso para que inicies sin costos ocultos.",
+      "Sí, el 20 % aplica en la mensualidad de Pesas ($380 → $304, ahorras $76) o de Spinning ($500 → $400, ahorras $100). Elige el área que más se ajuste a tus metas.",
   },
   {
-    question: "¿Qué incluye el plan de Spinning?",
+    question: "¿Qué incluye la mensualidad de Pesas?",
     answer:
-      "Incluye acceso completo a las clases de Spinning, asesoría en técnica y postura, horarios flexibles (Lun-Vie 5am-10pm, Sáb 6:30am-5pm, Dom 12pm-4pm) y todos los beneficios del gimnasio.",
+      "Incluye acceso completo al área de fuerza y pesas, asesoría personalizada en rutinas y horarios Lun–Vie 5am–10pm, Sáb 6am–5pm, Dom 12pm–4pm.",
   },
   {
-    question: "¿Necesito llevar algo especial a las clases de Spinning?",
+    question: "¿Qué incluye la mensualidad de Spinning?",
     answer:
-      "Recomendamos ropa cómoda para ejercicio, zapatos deportivos con suela firme, toalla y botella de agua. En el gym encontrarás bicicletas de spinning disponibles para tus sesiones.",
+      "Incluye acceso a todas las clases de Spinning con instructor certificado, en los horarios Lun–Vie 6am–7am, 7am–8am, 6pm–7pm y 7pm–8pm. Cupo limitado.",
   },
 ];
 
 // ═══════════════════════════════════════════════════════════════
-//  PASOS
-// ═══════════════════════════════════════════════════════════════
-const steps = [
-  {
-    number: 1,
-    title: "Reúne a tu grupo",
-    description:
-      "Invita a tu pareja, amigo o arma un grupo de 3 o más para pedalear juntos y ahorrar más.",
-  },
-  {
-    number: 2,
-    title: "Contáctanos",
-    description:
-      "Escríbenos por redes o visítanos antes del 31 de marzo. Te confirmamos disponibilidad de horarios.",
-  },
-  {
-    number: 3,
-    title: "Inscríbanse juntos",
-    description:
-      "Completen su inscripción al mismo tiempo y disfruten el precio de grupo desde el primer día.",
-  },
-];
-
-// ═══════════════════════════════════════════════════════════════
-//  NAV MÓVIL
+//  NAVEGACIÓN MÓVIL INFERIOR
 // ═══════════════════════════════════════════════════════════════
 const mobileNavItems = [
-  {
-    id: "promo-spinning",
-    label: "Spinning",
-    href: "#promo-spinning",
-    icon: "clock" as const,
-  },
-  {
-    id: "permanentes",
-    label: "Siempre",
-    href: "#promociones-permanentes",
-    icon: "tag" as const,
-  },
-  {
-    id: "faq",
-    label: "FAQ",
-    href: "#faq",
-    icon: "grid" as const,
-  },
-  {
-    id: "inscribirse",
-    label: "Inscríbete",
-    href: "/contacto",
-    icon: "star" as const,
-  },
+  { id: "planes-papa",  label: "Planes",     href: "#planes-papa",             icon: "clock" as const },
+  { id: "permanentes",  label: "Siempre",    href: "#promociones-permanentes", icon: "tag"   as const },
+  { id: "faq",          label: "FAQ",        href: "#faq",                     icon: "grid"  as const },
+  { id: "inscribirse",  label: "Inscríbete", href: "/contacto",                icon: "star"  as const },
 ];
 ---
 
 <Layout
-  title="Promociones Marzo 2026 | Gym Trasciende — Spinning en Grupo Ocotlán"
-  description="Promo Spinning Marzo 2026 en Trasciende Gym Ocotlán. Ven en pareja por $450 c/u o en grupo de 3+ por $420 c/u. Inscripción gratis siempre."
-  keywords="promociones spinning gym, descuento spinning ocotlán, promo grupo spinning 2026, gym spinning oferta, inscripción gratis gym trasciende"
+  title="Promo Día del Padre Junio 2026 | Gym Trasciende — 20% Descuento Pesas y Spinning"
+  description="Promo Día del Padre en Gym Trasciende Ocotlán. 20% de descuento en mensualidades de Pesas ($304) y Spinning ($400) durante todo junio 2026. Solo para papás con identificación."
+  keywords="promo día del padre gym ocotlán, descuento papás junio 2026, pesas descuento ocotlán, spinning precio especial papás, gym trasciende junio, mensualidad gym papá"
   type="website"
 >
+
   {/* ═══════════════════════════════════════════════════════
-      SECCIÓN 1 — HERO (gradiente direccional)
+      SECCIÓN 1 — HERO
+      Fondo: /imagenfondo5.webp con overlays oscuros
+      Decorativo: "20%" gigante en el fondo (muy translúcido)
+      Contenido: badge dorado, título + slogan, precios rápidos, CTAs
       ═══════════════════════════════════════════════════════ */}
   <section
     class="bg-background relative min-h-screen overflow-hidden"
-    aria-label="Promo Spinning Marzo 2026"
+    aria-label="Promo Día del Padre Junio 2026"
   >
-    {/* Imagen de fondo */}
+
+    {/* Imagen de fondo del gym */}
     <img
-      src="/spining1.webp"
+      src="/imagenfondo5.webp"
       alt=""
       class="absolute inset-0 h-full w-full object-cover object-center"
       loading="eager"
       aria-hidden="true"
     />
 
-    {/* Mobile: overlay sólido oscuro sobre toda la imagen */}
-    <div class="from-background/95 via-background/85 absolute inset-0 bg-linear-to-t to-background/40 lg:hidden">
+    {/* Mobile: overlay sólido oscuro desde abajo */}
+    <div class="from-background/97 via-background/85 absolute inset-0 bg-linear-to-t to-background/40 lg:hidden">
     </div>
 
     {/* Desktop: gradiente de izquierda (oscuro) a derecha (transparente) */}
     <div class="from-background via-background/90 absolute inset-0 hidden bg-linear-to-r to-transparent lg:block">
     </div>
 
-    {/* Fade inferior en ambos breakpoints */}
-    <div class="from-background absolute inset-x-0 bottom-0 h-32 bg-linear-to-t to-transparent">
+    {/* Fade inferior suave en ambos breakpoints */}
+    <div class="from-background absolute inset-x-0 bottom-0 h-48 bg-linear-to-t to-transparent">
     </div>
 
-    {/* Contenido */}
+    {/* Decorativo: "20%" enorme de fondo — refuerza visualmente el descuento */}
+    <div
+      class="pointer-events-none absolute inset-0 flex select-none items-center justify-end overflow-hidden pr-4 opacity-[0.035] lg:pr-12"
+      aria-hidden="true"
+    >
+      <span
+        class="text-primary font-black leading-none"
+        style="font-size: clamp(12rem, 32vw, 26rem);"
+      >
+        20%
+      </span>
+    </div>
+
+    {/* Contenido centrado verticalmente */}
     <div class="relative z-10 flex min-h-screen items-center">
-      <div class="mx-auto w-full max-w-7xl px-4 py-28 lg:py-0">
+      <div class="mx-auto w-full max-w-7xl px-4 py-28 lg:pt-36 lg:pb-16">
         <div class="flex max-w-2xl flex-col gap-7">
-          {/* Badge */}
+
+          {/* Badge dorado — evoca el Día del Padre */}
           <div class="inline-flex items-center gap-3">
-            <div class="bg-primary h-px w-10 animate-pulse"></div>
+            <div class="h-px w-10 animate-pulse bg-amber-400"></div>
             <span
-              class="border-primary/40 bg-primary/10 text-primary rounded-full border px-4 py-1.5 text-xs font-semibold tracking-widest uppercase"
+              class="rounded-full border border-amber-400/40 bg-amber-400/10 px-4 py-1.5 text-xs font-semibold tracking-widest text-amber-300 uppercase"
             >
-              Promoción · Marzo 2026
+              Día del Padre · Junio 2026
             </span>
           </div>
 
-          {/* Título */}
+          {/* Título principal */}
           <h1
             class="text-5xl leading-[1.05] font-black tracking-tight text-white md:text-7xl lg:text-8xl"
           >
-            Spinning
+            Papá este mes
             <span
               class="from-primary to-primary/60 block bg-linear-to-r bg-clip-text text-transparent"
             >
-              en Grupo
+              te toca a ti.
             </span>
           </h1>
 
-          {/* Eslogan */}
+          {/* Subtítulo */}
           <p class="max-w-xl text-lg leading-relaxed text-zinc-300 md:text-xl">
-            Este marzo pedalea acompañado y paga menos. Trae a tu pareja o arma
-            un grupo y aprovecha el precio especial de temporada.
+            <span class="text-primary font-bold">20 % de descuento</span> en mensualidades
+            de{" "}
+            <span class="font-semibold text-white">Pesas</span> y{" "}
+            <span class="font-semibold text-white">Spinning</span>.
+            Solo durante junio, solo para papás.
           </p>
+
+          {/* Precios rápidos — vista previa del ahorro antes de bajar */}
+          <div class="flex flex-wrap gap-3">
+
+            {/* Precio Pesas */}
+            <div
+              class="rounded-xl border border-zinc-700 bg-zinc-900/70 px-4 py-3 backdrop-blur-sm"
+            >
+              <p class="text-xs font-medium tracking-wider text-zinc-500 uppercase">
+                Pesas
+              </p>
+              <div class="mt-1 flex items-baseline gap-2">
+                <span class="text-sm text-zinc-500 line-through">$380</span>
+                <span class="text-primary text-xl font-black">$304</span>
+              </div>
+            </div>
+
+            {/* Precio Spinning */}
+            <div
+              class="rounded-xl border border-zinc-700 bg-zinc-900/70 px-4 py-3 backdrop-blur-sm"
+            >
+              <p class="text-xs font-medium tracking-wider text-zinc-500 uppercase">
+                Spinning
+              </p>
+              <div class="mt-1 flex items-baseline gap-2">
+                <span class="text-sm text-zinc-500 line-through">$500</span>
+                <span class="text-primary text-xl font-black">$400</span>
+              </div>
+            </div>
+
+            {/* Pill de inscripción gratis */}
+            <div
+              class="flex items-center rounded-xl border border-zinc-700 bg-zinc-900/70 px-4 py-3 backdrop-blur-sm"
+            >
+              <p class="text-xs font-semibold text-zinc-400">
+                🎁 Inscripción <span class="text-white">gratis</span>
+              </p>
+            </div>
+          </div>
 
           {/* CTAs */}
           <div class="flex flex-col gap-4 pt-2 sm:flex-row">
+
+            {/* CTA principal — baja a las tarjetas */}
             <a
-              href="#promo-spinning"
+              href="#planes-papa"
               class="group border-primary text-primary hover:bg-primary/20 inline-flex items-center justify-center gap-2 rounded-xl border-2 px-6 py-3.5 font-bold transition-all duration-300 hover:scale-105 active:scale-95"
             >
-              <span class="text-base font-semibold">Ver Promoción</span>
+              <span class="text-base font-semibold">Ver Planes</span>
               <ButtonAnimation
                 width={22}
                 height={22}
@@ -317,6 +400,7 @@ const mobileNavItems = [
               />
             </a>
 
+            {/* CTA secundario — ir a contacto */}
             <a
               href="/contacto"
               class="group border-secondary text-secondary hover:bg-secondary/10 inline-flex items-center justify-center gap-2 rounded-xl border-2 px-6 py-3.5 font-bold transition-all duration-300 hover:scale-105 active:scale-95"
@@ -325,17 +409,55 @@ const mobileNavItems = [
               <ArrowAnimation class="size-5" />
             </a>
           </div>
+
         </div>
       </div>
     </div>
   </section>
 
   {/* ═══════════════════════════════════════════════════════
-      SECCIÓN 2 — PROMO SPINNING MARZO
+      BANNER — Condiciones de la promo
+      Tres píldoras: documentos requeridos, fechas, quién aplica
+      ═══════════════════════════════════════════════════════ */}
+  <div class="border-y border-primary/10 bg-zinc-950/90 backdrop-blur-sm">
+    <div class="mx-auto max-w-5xl px-4 py-5">
+      <div
+        class="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-8 md:gap-14"
+      >
+        {
+          condiciones.map((c, i) => (
+            <>
+              {/* Píldora de condición */}
+              <div class="flex items-center gap-2.5">
+                <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-400/10">
+                  <span class="text-sm">{c.emoji}</span>
+                </div>
+                <p class="text-sm text-zinc-400">
+                  {c.texto}{" "}
+                  <span class="font-semibold text-white">{c.destacado}</span>
+                </p>
+              </div>
+
+              {/* Separador vertical entre píldoras (solo desktop, no después del último) */}
+              {i < condiciones.length - 1 && (
+                <div class="hidden h-5 w-px bg-zinc-700 sm:block" />
+              )}
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  {/* ═══════════════════════════════════════════════════════
+      SECCIÓN 2 — PLANES CON 20 % OFF
+      Tarjetas con imagen de cabecera, precios comparados,
+      lista de beneficios y CTA individual por plan
       ═══════════════════════════════════════════════════════ */}
   <SectionContainer class="py-20 md:py-28">
-    <div id="promo-spinning" class="mx-auto max-w-7xl">
-      {/* Header */}
+    <div id="planes-papa" class="mx-auto max-w-7xl">
+
+      {/* Encabezado de sección */}
       <div class="mb-14 text-center">
         <span
           class="border-primary/30 bg-primary/10 text-primary mb-4 inline-block rounded-full border px-4 py-1 text-xs font-semibold tracking-widest uppercase"
@@ -343,16 +465,16 @@ const mobileNavItems = [
           Promo del Mes
         </span>
         <h2 class="text-3xl font-black text-white md:text-5xl">
-          Spinning de{" "}
-          <span class="text-primary">Marzo</span>
+          Tu Mensualidad con{" "}
+          <span class="text-primary">20 % Off</span>
         </h2>
         <p class="mx-auto mt-4 max-w-xl text-zinc-400">
-          Inscríbanse juntos y pedaleen con más motivación — y mejor precio.
-          Todas las promos incluyen inscripción gratis.
+          Elige el área que más te guste. Ambas promos incluyen inscripción gratis
+          y un mes completo de entrenamiento al mejor precio.
         </p>
       </div>
 
-      {/* Countdown */}
+      {/* Countdown hasta el 30 de junio */}
       <div class="mb-12 flex justify-center">
         <div
           class="border-primary/20 bg-zinc-900/60 rounded-2xl border px-8 py-5 backdrop-blur-sm"
@@ -362,66 +484,80 @@ const mobileNavItems = [
           >
             Tiempo restante de la promo
           </p>
-          <CountdownTimer client:load targetDate="2026-03-31T23:59:59" />
+          <CountdownTimer client:load targetDate="2026-06-30T23:59:59" />
         </div>
       </div>
 
-      {/* Tarjetas */}
+      {/* Tarjetas de plan */}
       <div class="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
         {
-          promosMarzoPlan.map((plan) => (
+          promosJunio.map((plan) => (
             <article
               class:list={[
                 "group relative flex flex-col overflow-hidden rounded-3xl border backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl",
                 plan.highlight
-                  ? "border-primary bg-zinc-900/80 hover:border-primary hover:shadow-primary/20"
-                  : "border-primary/20 bg-zinc-900/60 hover:border-primary/50 hover:shadow-primary/10",
+                  ? "border-primary bg-zinc-900/80 hover:shadow-primary/20"
+                  : "border-zinc-700/60 bg-zinc-900/60 hover:border-primary/50 hover:shadow-primary/10",
               ]}
             >
-              {/* Badge */}
-              <div class="absolute top-5 right-5 z-10">
-                <span
-                  class:list={[
-                    "rounded-full px-3 py-1 text-xs font-black tracking-widest uppercase",
-                    plan.highlight
-                      ? "bg-primary text-black"
-                      : "border-primary/50 border bg-primary/10 text-primary",
-                  ]}
-                >
-                  {plan.badge}
-                </span>
-              </div>
 
-              <div class="p-8">
-                {/* Icono */}
-                <div class="mb-5 text-4xl transition-transform duration-300 group-hover:scale-110">
-                  {plan.icon}
+              {/* Imagen del área del gym con overlay degradado */}
+              <div class="relative h-44 w-full overflow-hidden">
+                <img
+                  src={plan.imagen}
+                  alt={plan.servicio}
+                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                {/* Degradado que funde la imagen con el cuerpo de la tarjeta */}
+                <div class="absolute inset-0 bg-linear-to-t from-zinc-900 via-zinc-900/30 to-transparent" />
+
+                {/* Badge "20% OFF" fijo sobre la imagen */}
+                <div class="absolute top-4 right-4 z-10">
+                  <span class="bg-primary rounded-full px-3 py-1.5 text-xs font-black tracking-widest text-black uppercase shadow-lg">
+                    20 % OFF
+                  </span>
                 </div>
 
-                {/* Título + subtítulo */}
-                <h3 class="mb-1 text-2xl font-black text-white">{plan.title}</h3>
-                <p class="text-primary mb-5 text-sm font-semibold">
-                  {plan.subtitle}
-                </p>
+                {/* Icono del servicio en la esquina inferior izquierda */}
+                <div class="absolute bottom-3 left-5 z-10">
+                  <span class="text-2xl drop-shadow-lg">{plan.icon}</span>
+                </div>
+              </div>
 
-                {/* Precio */}
-                <div class="mb-1 flex items-baseline gap-2">
+              {/* Cuerpo de la tarjeta */}
+              <div class="flex flex-1 flex-col p-7">
+
+                {/* Nombre y subtítulo del servicio */}
+                <h3 class="mb-1 text-2xl font-black text-white">{plan.servicio}</h3>
+                <p class="text-primary mb-5 text-sm font-semibold">{plan.subtitulo}</p>
+
+                {/* Comparación de precios: tachado + nuevo */}
+                <div class="mb-1 flex items-baseline gap-3">
+                  <span class="text-lg text-zinc-500 line-through">{plan.precioOriginal}</span>
                   <span
                     class:list={[
                       "text-5xl font-black tabular-nums",
                       plan.highlight ? "text-primary" : "text-white",
                     ]}
                   >
-                    {plan.price}
+                    {plan.precioPromo}
                   </span>
                 </div>
-                <p class="mb-6 text-sm text-zinc-500">{plan.priceDetail}</p>
+                <p class="mb-4 text-sm text-zinc-500">por persona / mes</p>
 
-                {/* Separador */}
+                {/* Pill de ahorro */}
+                <div class="border-primary/30 bg-primary/10 mb-6 inline-flex w-fit items-center gap-1.5 rounded-full border px-3 py-1">
+                  <span class="text-primary text-xs font-bold">
+                    ✦ Ahorras {plan.ahorro} este mes
+                  </span>
+                </div>
+
+                {/* Separador punteado */}
                 <div class="border-primary/20 mb-6 border-t border-dashed" />
 
-                {/* Features */}
-                <ul class="mb-8 space-y-3">
+                {/* Lista de beneficios */}
+                <ul class="mb-8 flex-1 space-y-3">
                   {plan.features.map((feature) => (
                     <li class="flex items-center gap-3">
                       <svg
@@ -441,12 +577,7 @@ const mobileNavItems = [
                   ))}
                 </ul>
 
-                {/* Nota de ahorro */}
-                <p class="text-primary/70 mb-5 text-xs font-semibold tracking-wide">
-                  ✦ {plan.savings}
-                </p>
-
-                {/* CTA */}
+                {/* CTA de la tarjeta */}
                 <a
                   href="/contacto"
                   class:list={[
@@ -463,15 +594,66 @@ const mobileNavItems = [
           ))
         }
       </div>
+
+      {/* Nota legal / condiciones resumidas */}
+      <p class="mt-8 text-center text-xs text-zinc-600">
+        ✦ Inscripción gratis siempre &nbsp;·&nbsp; Válido al presentar identificación oficial &nbsp;·&nbsp; Promo hasta el 30/06/2026 &nbsp;·&nbsp; Solo para papás
+      </p>
     </div>
   </SectionContainer>
 
   {/* ═══════════════════════════════════════════════════════
-      SECCIÓN 3 — PROMOCIONES PERMANENTES
+      SECCIÓN 3 — CÓMO CANJEAR
+      Tres pasos numerados sobre fondo parallax
+      ═══════════════════════════════════════════════════════ */}
+  <SectionContainer
+    backgroundImage="linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.82)), url('/fondofijo.webp')"
+    fixedBackground={true}
+    class="py-20 md:py-24"
+  >
+    <div class="mx-auto max-w-7xl">
+
+      {/* Encabezado */}
+      <div class="mb-14 text-center">
+        <span
+          class="border-primary/30 bg-primary/10 text-primary mb-4 inline-block rounded-full border px-4 py-1 text-xs font-semibold tracking-widest uppercase"
+        >
+          Es muy sencillo
+        </span>
+        <h2 class="text-3xl font-black text-white md:text-5xl">
+          ¿Cómo Canjear el Descuento?
+        </h2>
+        <p class="mx-auto mt-4 max-w-lg text-zinc-400">
+          Solo 3 pasos para que papá entrene al mejor precio este junio.
+        </p>
+      </div>
+
+      {/* Pasos numerados */}
+      <div class="grid gap-10 md:grid-cols-3">
+        {
+          pasos.map((paso) => (
+            <div class="group text-center transition-transform duration-300 hover:-translate-y-2">
+              {/* Número en círculo con color primario */}
+              <div class="bg-primary mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-primary/40">
+                <span class="text-3xl font-black text-black">{paso.numero}</span>
+              </div>
+              <h3 class="mb-3 text-lg font-black text-white">{paso.titulo}</h3>
+              <p class="leading-relaxed text-zinc-400">{paso.descripcion}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </SectionContainer>
+
+  {/* ═══════════════════════════════════════════════════════
+      SECCIÓN 4 — PROMOCIONES PERMANENTES
+      Disponibles todo el año, sin fecha límite
       ═══════════════════════════════════════════════════════ */}
   <SectionContainer class="py-20 md:py-28">
     <div id="promociones-permanentes" class="mx-auto max-w-7xl">
-      {/* Header */}
+
+      {/* Encabezado */}
       <div class="mb-14 text-center">
         <span
           class="mb-4 inline-block rounded-full border border-zinc-700 bg-zinc-800/60 px-4 py-1 text-xs font-semibold tracking-widest text-zinc-400 uppercase"
@@ -482,15 +664,16 @@ const mobileNavItems = [
           Disponibles <span class="text-zinc-400">Todo el Año</span>
         </h2>
         <p class="mx-auto mt-4 max-w-xl text-zinc-400">
-          Sin trucos, sin letra pequeña. Estas promociones siempre están activas
-          para ti.
+          Sin trucos, sin letra pequeña. Estas promociones siempre están activas para ti.
         </p>
       </div>
 
+      {/* Tarjetas permanentes */}
       <div class="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
         {
           promosPermanentes.map((promo) => (
             <article class="group border-zinc-800 hover:border-primary/30 hover:shadow-primary/5 relative overflow-hidden rounded-3xl border bg-zinc-900/60 p-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-900/80 hover:shadow-xl">
+
               {/* Badge */}
               <div class="absolute top-5 right-5">
                 <span class="rounded-full border border-zinc-700 bg-zinc-800 px-3 py-1 text-xs font-semibold tracking-wide text-zinc-400 uppercase">
@@ -503,14 +686,15 @@ const mobileNavItems = [
                 {promo.icon}
               </div>
 
-              <h3 class="mb-3 text-xl font-black text-white">{promo.title}</h3>
-              <p class="mb-5 leading-relaxed text-zinc-400">{promo.description}</p>
+              <h3 class="mb-3 text-xl font-black text-white">{promo.titulo}</h3>
+              <p class="mb-5 leading-relaxed text-zinc-400">{promo.descripcion}</p>
 
-              {/* Detail tag */}
+              {/* Detalle con línea animada */}
               <div class="inline-flex items-center gap-2">
-                <div class="bg-primary h-px w-6 transition-all duration-300 group-hover:w-10" />
+                <div class="bg-primary h-px w-6 transition-all duration-300 group-hover:w-10">
+                </div>
                 <span class="text-primary text-xs font-bold tracking-wide uppercase">
-                  {promo.detail}
+                  {promo.detalle}
                 </span>
               </div>
             </article>
@@ -521,43 +705,8 @@ const mobileNavItems = [
   </SectionContainer>
 
   {/* ═══════════════════════════════════════════════════════
-      SECCIÓN 4 — CÓMO APROVECHAR
-      ═══════════════════════════════════════════════════════ */}
-  <SectionContainer
-    backgroundImage="linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.82)), url('/fondofijo.webp')"
-    fixedBackground={true}
-    class="py-20 md:py-24"
-  >
-    <div class="mx-auto max-w-7xl">
-      <div class="mb-14 text-center">
-        <span
-          class="border-primary/30 bg-primary/10 text-primary mb-4 inline-block rounded-full border px-4 py-1 text-xs font-semibold tracking-widest uppercase"
-        >
-          Es muy sencillo
-        </span>
-        <h2 class="text-3xl font-black text-white md:text-5xl">
-          ¿Cómo Aprovechar la Promo?
-        </h2>
-      </div>
-
-      <div class="grid gap-10 md:grid-cols-3">
-        {
-          steps.map((step) => (
-            <div class="group text-center transition-transform duration-300 hover:-translate-y-2">
-              <div class="bg-primary mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-primary/40">
-                <span class="text-3xl font-black text-black">{step.number}</span>
-              </div>
-              <h3 class="mb-3 text-lg font-black text-white">{step.title}</h3>
-              <p class="leading-relaxed text-zinc-400">{step.description}</p>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </SectionContainer>
-
-  {/* ═══════════════════════════════════════════════════════
       SECCIÓN 5 — FAQ
+      Preguntas frecuentes específicas de esta promo
       ═══════════════════════════════════════════════════════ */}
   <div id="faq">
     <FAQ items={faqItems} />
@@ -565,18 +714,23 @@ const mobileNavItems = [
 
   {/* ═══════════════════════════════════════════════════════
       SECCIÓN 6 — CTA FINAL
+      Tarjeta con imagen de fondo, overlay oscuro-verde,
+      headline emocional y botones de acción
       ═══════════════════════════════════════════════════════ */}
   <SectionContainer class="py-20 md:py-28">
     <div class="mx-auto max-w-4xl">
       <div class="relative overflow-hidden rounded-3xl">
+
         {/* Imagen de fondo */}
         <img
-          src="/soinning2.webp"
+          src="/fondo2.webp"
           alt=""
           class="absolute inset-0 h-full w-full object-cover"
           loading="lazy"
           aria-hidden="true"
         />
+
+        {/* Overlay oscuro con tinte verde para mantener identidad de marca */}
         <div
           class="from-background/97 via-background/90 absolute inset-0 bg-linear-to-br to-[#1a2500]/88"
         >
@@ -585,36 +739,46 @@ const mobileNavItems = [
         <div
           class="border-primary/25 relative z-10 rounded-3xl border p-10 text-center md:p-16"
         >
-          {/* Ícono */}
+
+          {/* Ícono central */}
           <div
             class="bg-primary/15 mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl"
           >
-            <span class="text-3xl">🚴‍♀️</span>
+            <span class="text-3xl">💪</span>
           </div>
 
+          {/* Badge temporal en dorado */}
           <p
-            class="text-primary mb-2 text-xs font-semibold tracking-widest uppercase"
+            class="mb-2 text-xs font-semibold tracking-widest text-amber-400 uppercase"
           >
-            Solo en Marzo 2026
-          </p>
-          <h2 class="mb-4 text-3xl font-black text-white md:text-5xl">
-            Pedalea Juntos,<br />
-            <span class="text-primary">Pagan Menos</span>
-          </h2>
-          <p class="mx-auto mb-8 max-w-xl text-lg leading-relaxed text-zinc-300">
-            La promo de Spinning de Marzo vence el 31 de marzo. Inscríbete con
-            tu grupo antes de que termine y aprovecha el mejor precio del mes.
+            Solo en Junio 2026
           </p>
 
+          {/* Headline emocional */}
+          <h2 class="mb-4 text-3xl font-black text-white md:text-5xl">
+            Papá, este es<br />
+            <span class="text-primary">tu momento.</span>
+          </h2>
+
+          {/* Descripción */}
+          <p class="mx-auto mb-8 max-w-xl text-lg leading-relaxed text-zinc-300">
+            20 % de descuento en Pesas o Spinning durante todo el mes. Inscríbete
+            antes del 30 de junio y empieza a entrenar al mejor precio.
+          </p>
+
+          {/* Botones de acción */}
           <div
             class="flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
+            {/* CTA primario */}
             <a
               href="/contacto"
               class="bg-primary hover:bg-[#c5eb00] inline-flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 text-lg font-black text-black shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/30 sm:w-auto"
             >
-              Inscribirme en Spinning
+              Aprovechar el Descuento
             </a>
+
+            {/* CTA secundario */}
             <a
               href="/reviews"
               class="border-primary/50 text-primary hover:bg-primary/10 inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 px-8 py-4 text-lg font-bold transition-all duration-300 hover:scale-105 sm:w-auto"
@@ -623,9 +787,9 @@ const mobileNavItems = [
             </a>
           </div>
 
+          {/* Condiciones resumidas al pie */}
           <p class="mt-6 text-sm text-zinc-500">
-            ✦ Inscripción gratis siempre &nbsp;·&nbsp; Promo válida hasta el
-            31/03/2026
+            ✦ Inscripción gratis siempre &nbsp;·&nbsp; Promo válida hasta el 30/06/2026 &nbsp;·&nbsp; Solo para papás
           </p>
         </div>
       </div>
