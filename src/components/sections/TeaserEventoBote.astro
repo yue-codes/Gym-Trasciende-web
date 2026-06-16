@@ -25,7 +25,7 @@ import ArrowAnimation from "@components/icons/ArrowAnimation.astro";
     {/* Todo el banner es un enlace para facilitar el click en móvil */}
     <a
       href="/promociones#bote-challenge"
-      class="group border-primary/40 hover:border-primary/70 relative flex flex-col items-start gap-5 overflow-hidden rounded-2xl border border-dashed bg-zinc-900/60 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-zinc-900/80 sm:flex-row sm:items-center sm:justify-between md:p-8"
+      class="group relative flex flex-col items-start gap-5 overflow-hidden rounded-2xl border border-dashed border-purple-500/40 bg-zinc-900/60 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-purple-500/70 hover:bg-zinc-900/80 sm:flex-row sm:items-center sm:justify-between md:p-8"
       aria-label="Ver El Bote Challenge en la página de promociones"
     >
       {/* Decorativo: "22" grande translúcido — alude a la fecha del evento */}
@@ -34,7 +34,7 @@ import ArrowAnimation from "@components/icons/ArrowAnimation.astro";
         aria-hidden="true"
       >
         <span
-          class="text-primary leading-none font-black"
+          class="leading-none font-black text-purple-400"
           style="font-size: 9rem;"
         >
           22
@@ -45,7 +45,7 @@ import ArrowAnimation from "@components/icons/ArrowAnimation.astro";
       <div class="flex items-center gap-4">
         {/* Ícono */}
         <div
-          class="bg-primary/10 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-2xl transition-transform duration-300 group-hover:scale-110"
+          class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-purple-500/10 text-2xl transition-transform duration-300 group-hover:scale-110"
         >
           🧴
         </div>
@@ -55,7 +55,7 @@ import ArrowAnimation from "@components/icons/ArrowAnimation.astro";
           {/* Badges de fecha y tipo */}
           <div class="mb-1.5 flex flex-wrap items-center gap-2">
             <span
-              class="bg-primary rounded-full px-2.5 py-0.5 text-xs font-black text-black uppercase"
+              class="rounded-full bg-purple-500 px-2.5 py-0.5 text-xs font-black text-white uppercase"
             >
               22 de Junio
             </span>
@@ -79,7 +79,7 @@ import ArrowAnimation from "@components/icons/ArrowAnimation.astro";
 
       {/* Flecha CTA — se mueve en hover gracias a ArrowAnimation */}
       <div
-        class="text-primary flex shrink-0 items-center gap-2 text-sm font-semibold transition-all duration-300 group-hover:gap-3"
+        class="flex shrink-0 items-center gap-2 text-sm font-semibold text-purple-400 transition-all duration-300 group-hover:gap-3"
       >
         <span>Ver la promo</span>
         <ArrowAnimation class="size-4" />

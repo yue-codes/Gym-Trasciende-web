@@ -12,6 +12,7 @@ import ServiceBento from "@components/services/ServiceBento.astro";
 import MobileBottomNav from "@components/layout/MobileBottomNav.tsx";
 import TeaserEventoBote from "@components/sections/TeaserEventoBote.astro";
 import StickyBannerBote from "@components/sections/StickyBannerBote.astro";
+import TeaserDiaPadre from "@components/sections/TeaserDiaPadre.astro";
 
 // Horarios del gimnasio
 const schedule = [
@@ -68,6 +69,10 @@ const mobileNavItems = [
     /* Teaser del Bote Challenge — eliminar esta línea para quitar el banner del home */
   }
   <TeaserEventoBote />
+  {
+    /* Teaser Día del Padre — eliminar esta línea para quitar del home */
+  }
+  <TeaserDiaPadre />
 
   <ServiceBento />
   <TrustMetrics />

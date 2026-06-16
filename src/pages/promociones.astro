@@ -105,7 +105,7 @@ const promosJunio = [
     servicio: "Fuerza y Pesas",
     subtitulo: "Área completa con asesoría",
     precioOriginal: "$380",
-    precioPromo: "$304", // $380 × 0.80
+    precioPromo: "$300", // $380 × 0.80
     ahorro: "$76", // $380 × 0.20
     icon: "🏋️",
     imagen: "/bento-info/bentopesas.webp",
@@ -476,16 +476,20 @@ const mobileNavItems = [
     </div>
   </div>
 
-  {/* ═══════════════════════════════════════════════════════
+  {
+    /* ═══════════════════════════════════════════════════════
       SECCIÓN 2 — VIDEO DE LA PROMO
       Mismo layout que SocialBest: px-0 + flex con overflow-hidden
       para que el video se vea igual que en el carrusel del home
-      ═══════════════════════════════════════════════════════ */}
+      ═══════════════════════════════════════════════════════ */
+  }
   <SectionContainer class="px-0 py-14 md:py-20">
     {/* Título de la sección */}
     <div class="mb-8 flex items-center justify-center gap-3 px-4">
       <div class="h-px w-8 bg-amber-400/60"></div>
-      <span class="text-xs font-semibold tracking-widest text-amber-400 uppercase">
+      <span
+        class="text-xs font-semibold tracking-widest text-amber-400 uppercase"
+      >
         Mira cómo funciona
       </span>
       <div class="h-px w-8 bg-amber-400/60"></div>
@@ -502,10 +506,12 @@ const mobileNavItems = [
     </div>
   </SectionContainer>
 
-  {/* ═══════════════════════════════════════════════════════
+  {
+    /* ═══════════════════════════════════════════════════════
       SECCIÓN 3 — EVENTO ESPECIAL: EL BOTE CHALLENGE
       Componente autocontenido — eliminar línea de abajo para quitar el evento
-      ═══════════════════════════════════════════════════════ */}
+      ═══════════════════════════════════════════════════════ */
+  }
   <PromoEventoBote />
 
   {
@@ -763,7 +769,7 @@ const mobileNavItems = [
 
               {/* Detalle con línea animada */}
               <div class="inline-flex items-center gap-2">
-                <div class="bg-primary h-px w-6 transition-all duration-300 group-hover:w-10"></div>
+                <div class="bg-primary h-px w-6 transition-all duration-300 group-hover:w-10" />
                 <span class="text-primary text-xs font-bold tracking-wide uppercase">
                   {promo.detalle}
                 </span>
