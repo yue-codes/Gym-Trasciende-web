@@ -13,28 +13,28 @@ import SectionContainer from "@components/layout/SectionContainer.astro";
 import ArrowAnimation from "@components/icons/ArrowAnimation.astro";
 ---
 
-{/* ═══════════════════════════════════════════════════════
+{
+  /* ═══════════════════════════════════════════════════════
     TEASER — El Bote Challenge
     Banner clicable que lleva a /promociones
     El "22" decorativo refuerza la fecha sin ocupar espacio
-    ═══════════════════════════════════════════════════════ */}
+    ═══════════════════════════════════════════════════════ */
+}
 <SectionContainer class="py-10 md:py-12">
   <div class="mx-auto max-w-7xl">
-
     {/* Todo el banner es un enlace para facilitar el click en móvil */}
     <a
-      href="/promociones"
-      class="group relative flex flex-col items-start gap-5 overflow-hidden rounded-2xl border border-dashed border-primary/40 bg-zinc-900/60 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/70 hover:bg-zinc-900/80 sm:flex-row sm:items-center sm:justify-between md:p-8"
+      href="/promociones#bote-challenge"
+      class="group border-primary/40 hover:border-primary/70 relative flex flex-col items-start gap-5 overflow-hidden rounded-2xl border border-dashed bg-zinc-900/60 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-zinc-900/80 sm:flex-row sm:items-center sm:justify-between md:p-8"
       aria-label="Ver El Bote Challenge en la página de promociones"
     >
-
       {/* Decorativo: "22" grande translúcido — alude a la fecha del evento */}
       <div
-        class="pointer-events-none absolute top-0 right-6 select-none overflow-hidden opacity-[0.04]"
+        class="pointer-events-none absolute top-0 right-6 overflow-hidden opacity-[0.04] select-none"
         aria-hidden="true"
       >
         <span
-          class="text-primary font-black leading-none"
+          class="text-primary leading-none font-black"
           style="font-size: 9rem;"
         >
           22
@@ -43,7 +43,6 @@ import ArrowAnimation from "@components/icons/ArrowAnimation.astro";
 
       {/* Ícono + información del evento */}
       <div class="flex items-center gap-4">
-
         {/* Ícono */}
         <div
           class="bg-primary/10 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-2xl transition-transform duration-300 group-hover:scale-110"
@@ -80,7 +79,7 @@ import ArrowAnimation from "@components/icons/ArrowAnimation.astro";
 
       {/* Flecha CTA — se mueve en hover gracias a ArrowAnimation */}
       <div
-        class="flex shrink-0 items-center gap-2 text-sm font-semibold text-primary transition-all duration-300 group-hover:gap-3"
+        class="text-primary flex shrink-0 items-center gap-2 text-sm font-semibold transition-all duration-300 group-hover:gap-3"
       >
         <span>Ver la promo</span>
         <ArrowAnimation class="size-4" />
