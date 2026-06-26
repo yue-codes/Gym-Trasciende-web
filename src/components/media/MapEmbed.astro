@@ -9,16 +9,16 @@
 interface Props {
   height?: string;
   class?: string;
+  mapQuery?: string;
 }
 
-const { height = "450", class: className } = Astro.props;
+const {
+  height = "450",
+  class: className,
+  mapQuery = "TRASCIENDE GYM, Ocotlán de Morelos, Oaxaca",
+} = Astro.props;
 
-// Nombre y ubicación del gimnasio
-const placeName = "TRASCIENDE GYM";
-const placeLocation = "Ocotlán de Morelos, Oaxaca";
-
-// URL del mapa usando el nombre del lugar (sin API key necesaria)
-const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(placeName + ", " + placeLocation)}&t=&z=17&ie=UTF8&iwloc=&output=embed`;
+const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&t=&z=17&ie=UTF8&iwloc=&output=embed`;
 ---
 
 <div class:list={["w-full overflow-hidden rounded-lg", className]}>
@@ -30,6 +30,6 @@ const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(placeName + 
     allowfullscreen=""
     loading="lazy"
     referrerpolicy="no-referrer-when-downgrade"
-    title="Ubicación de Gym Trasciende - Ocotlán de Morelos, Oaxaca"
+    title={`Ubicación de Gym Trasciende - ${mapQuery}`}
     class="w-full"></iframe>
 </div>

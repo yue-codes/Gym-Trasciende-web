@@ -1,8 +1,6 @@
 ---
-/**
- * Location - Sección de ubicación reutilizable con mapa
- */
 import MapEmbed from "@components/media/MapEmbed.astro";
+import { branches } from "src/data/locations";
 
 interface Props {
   class?: string;
@@ -14,15 +12,12 @@ const { class: className, id } = Astro.props;
 
 <section
   id={id}
-  class:list={[
-    "border-primary/30 mb-12 overflow-hidden rounded-2xl border bg-gray-900/50 p-6 backdrop-blur-sm",
-    className,
-  ]}
+  class:list={["mb-12", className]}
   aria-labelledby="location-heading"
 >
-  <div class="mb-4 flex items-center gap-3">
+  <div class="mb-6 flex items-center gap-3">
     <div
-      class="bg-primary/20 flex h-12 w-12 items-center justify-center rounded-xl"
+      class="bg-primary/20 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -44,18 +39,91 @@ const { class: className, id } = Astro.props;
       </svg>
     </div>
     <h2 id="location-heading" class="text-2xl font-bold text-white">
-      Ubicación del Gimnasio
+      Nuestras Sucursales
     </h2>
   </div>
 
-  <p class="mb-4 text-gray-300">
-    📍 Guillermo Prieto Sur 45, Ocotlán de Morelos, Oaxaca. Gym con
-    entrenamiento personalizado y equipamiento profesional.
-  </p>
+  <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+    {
+      branches.map((branch) => (
+        <div class="border-primary/30 overflow-hidden rounded-2xl border bg-gray-900/50 backdrop-blur-sm">
+          <!-- Encabezado de la tarjeta -->
+          <div class="flex items-center justify-between gap-3 p-5 pb-4">
+            <h3 class="text-lg font-bold text-white">{branch.name}</h3>
+            {branch.isNew && (
+              <span class="bg-primary text-tertiary rounded-full px-3 py-1 text-xs font-bold tracking-wide">
+                NUEVA
+              </span>
+            )}
+          </div>
 
-  <MapEmbed
-    height="300"
-    class="rounded-lg"
-    aria-label="Mapa interactivo con la ubicación de Gym Trasciende en Guillermo Prieto Sur 45, Ocotlán de Morelos, Oaxaca"
-  />
+          <!-- Mapa -->
+          <MapEmbed
+            height="220"
+            mapQuery={branch.mapQuery}
+            class="rounded-none"
+          />
+
+          <!-- Info -->
+          <div class="space-y-4 p-5">
+            <!-- Dirección -->
+            <p class="flex items-start gap-2 text-sm text-gray-300">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="text-primary mt-0.5 h-4 w-4 shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+              {branch.address}
+            </p>
+
+            <!-- Teléfono -->
+            <a
+              href={`tel:${branch.phone}`}
+              class="flex items-center gap-2 text-sm text-gray-300 transition-colors hover:text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="text-primary h-4 w-4 shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"
+                />
+              </svg>
+              {branch.phoneDisplay}
+            </a>
+
+            <!-- Horarios -->
+            <div class="space-y-1.5">
+              {branch.schedule.map((item) => (
+                <div class="flex items-center justify-between rounded-lg bg-white/5 px-3 py-2 text-sm">
+                  <span class="text-gray-300">{item.days}</span>
+                  <span class="text-primary font-semibold">{item.hours}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
 </section>

@@ -35,6 +35,29 @@ const services = [
     gridClass: "aspect-[4/5]",
   },
   {
+    href: "/contacto",
+    image: "/gym-10.jpg",
+    title: "Clases de Zumba",
+    price: "Próximamente",
+    schedule: "Consulta horarios",
+    feature: "Baila y quema calorías con música latina",
+    gridClass: "aspect-[4/5]",
+    locationBadge: "Sucursal San Antonino",
+  },
+  {
+    href: "/contacto",
+    image: "/gym-9.jpg",
+    imageBg: "bg-linear-to-br from-[#1a1200] via-[#3d2d00] to-[#7a5c00]",
+    imgClass:
+      "h-full w-full object-cover object-center opacity-60 transition-transform duration-300 ease-in-out md:group-hover:scale-105",
+    title: "Cafetería",
+    price: "Próximamente",
+    schedule: "En horario del gym",
+    feature: "Snacks, bebidas y suplementos para tu entrenamiento",
+    gridClass: "aspect-[4/5] md:col-span-2 md:aspect-video",
+    locationBadge: "Ambas sucursales",
+  },
+  {
     href: "/servicios/area-adultos",
     image: "/bento-info/entrenadores.webp",
     title: "Área de Adultos",
@@ -48,7 +71,7 @@ const services = [
 
 <SectionContainer id="servicios" class="py-16 md:py-20">
   <Subtitle>¿Qué ofrecemos?</Subtitle>
-  <div class="grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-2 md:p-0">
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-3 md:p-0">
     {
       services.map((service) => (
         <ServiceBentoCard
