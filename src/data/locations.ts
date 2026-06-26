@@ -1,3 +1,7 @@
+// FUENTE DE VERDAD para todas las sucursales.
+// Edita aquí para cambiar dirección, teléfono, horarios o agregar una nueva sucursal.
+// Al agregar una sucursal, también actualiza el Schema.org en src/layouts/Layout.astro.
+
 export interface BranchSchedule {
   days: string;
   hours: string;
@@ -7,11 +11,11 @@ export interface Branch {
   id: string;
   name: string;
   address: string;
-  phone: string;
-  phoneDisplay: string;
+  phone: string;         // Formato E.164 para el enlace tel:
+  phoneDisplay: string;  // Formato legible para mostrar en pantalla
   schedule: BranchSchedule[];
-  mapQuery: string;
-  isNew?: boolean;
+  mapQuery: string;      // Nombre exacto en Google Maps para el embed
+  isNew?: boolean;       // Muestra badge "NUEVA" en la sección de ubicaciones
 }
 
 export const branches: Branch[] = [

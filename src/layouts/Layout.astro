@@ -33,8 +33,9 @@ const {
 const siteUrl = "https://trasciendegym.com";
 const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
 
-// Schema.org JSON-LD para SEO (optimizado y minificado)
-// Solo se incluye en páginas principales para mejor performance
+// Schema.org JSON-LD para SEO local — incluido solo en páginas principales por performance.
+// Al agregar o modificar una sucursal, actualizar este @graph manualmente para mantener
+// consistencia con src/data/locations.ts (ambos no están conectados en tiempo de build).
 const includeSchema =
   Astro.url.pathname === "/" ||
   Astro.url.pathname === "/nosotros" ||

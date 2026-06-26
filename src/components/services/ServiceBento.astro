@@ -3,6 +3,11 @@ import SectionContainer from "@components/layout/SectionContainer.astro";
 import Subtitle from "@components/ui/Subtitle.astro";
 import ServiceBentoCard from "./ServiceBentoCard.astro";
 
+// Agrega, reordena o elimina servicios aquí.
+// gridClass controla la posición en el grid de 3 columnas (desktop).
+// El primer item debe ser col-span-2 y el segundo col-start-3 row-span-2
+// para mantener el layout bento — no mover esos dos sin revisar el grid completo.
+// Al crear una página dedicada para Zumba o Cafetería, cambia su href y elimina locationBadge si aplica a ambas.
 const services = [
   {
     href: "/servicios/pesas-fuerza",
