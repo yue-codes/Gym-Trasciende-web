@@ -2,70 +2,61 @@
 /**
  * PromoEventoBote.astro
  *
- * Tarjeta del evento especial "El Bote Challenge" — 22 de junio 2026.
+ * Tarjeta del evento "El Bote Challenge" — 22 de junio 2026. COMPLETADO.
  * Diseño de dos columnas (desktop): video de Instagram a la izquierda,
- * detalles y countdown a la derecha. En móvil se apila verticalmente.
- *
- * Para eliminar este evento del sitio: quitar <PromoEventoBote /> de
- * src/pages/promociones.astro (este componente no toca nada más).
+ * detalles y resumen del resultado a la derecha. En móvil se apila verticalmente.
  */
 
 import InstagramVideo from "@components/media/InstagramVideo.astro";
-import CountdownTimer from "@components/ui/CountdownTimer";
 import SectionContainer from "@components/layout/SectionContainer.astro";
 
-// ═══════════════════════════════════════════════════════════════
-//  REGLAS DEL CONCURSO
-// ═══════════════════════════════════════════════════════════════
-const reglas = [
-  "Ven al gym el 22 de junio con tu bote de agua",
-  "Nuestro equipo elige el más random o creativo",
-  "El ganador recibe 50 % de descuento en su mensualidad",
-  "Un solo ganador por evento",
+const logros = [
+  "Participaron decenas de botes creativos y únicos",
+  "Nuestro equipo eligió al ganador más random",
+  "El ganador se llevó 50 % de descuento en su mensualidad",
+  "¡El ambiente estuvo increíble!",
 ];
 ---
 
 {/* ═══════════════════════════════════════════════════════
-    SECCIÓN — Evento Especial El Bote Challenge
-    Borde punteado para diferenciarlo visualmente de las
-    tarjetas estándar de descuento
+    SECCIÓN — Evento Completado: El Bote Challenge
     ═══════════════════════════════════════════════════════ */}
 
-{/* Anchor de navegación — scroll-mt compensa la altura del header fijo */}
+{/* Anchor de navegación */}
 <div id="bote-challenge" class="scroll-mt-24"></div>
 
 <SectionContainer class="py-14 md:py-20">
   <div class="mx-auto max-w-7xl">
 
-    {/* Tarjeta principal con borde punteado */}
+    {/* Tarjeta principal */}
     <div
-      class="relative overflow-hidden rounded-3xl border border-dashed border-purple-500/40 bg-zinc-900/60 p-8 backdrop-blur-sm md:p-12"
+      class="relative overflow-hidden rounded-3xl border border-dashed border-emerald-500/40 bg-zinc-900/60 p-8 backdrop-blur-sm md:p-12"
     >
 
-      {/* Decorativo: "50%" gigante translúcido de fondo */}
+      {/* Decorativo: trofeo gigante translúcido de fondo */}
       <div
         class="pointer-events-none absolute inset-0 flex select-none items-center justify-end overflow-hidden pr-4 opacity-[0.03]"
         aria-hidden="true"
       >
         <span
-          class="font-black leading-none text-purple-400"
+          class="font-black leading-none text-emerald-400"
           style="font-size: clamp(10rem, 28vw, 22rem);"
         >
-          50%
+          🏆
         </span>
       </div>
 
-      {/* Badges de la tarjeta */}
+      {/* Badges */}
       <div class="relative mb-6 flex flex-wrap items-center gap-3">
         <span
-          class="rounded-full border border-purple-500/40 bg-purple-500/10 px-3 py-1 text-xs font-black tracking-widest text-purple-400 uppercase"
+          class="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs font-black tracking-widest text-emerald-400 uppercase"
         >
           Evento Especial
         </span>
         <span
-          class="rounded-full bg-purple-500 px-3 py-1 text-xs font-black tracking-widest text-white uppercase"
+          class="rounded-full bg-emerald-500 px-3 py-1 text-xs font-black tracking-widest text-white uppercase"
         >
-          Solo 22 de Junio
+          ✓ Completado — 22 de Junio
         </span>
       </div>
 
@@ -81,34 +72,33 @@ const reglas = [
           />
         </div>
 
-        {/* ── Columna derecha: detalles del evento ── */}
+        {/* ── Columna derecha: resumen del éxito ── */}
         <div class="flex flex-col gap-6">
 
           {/* Eyebrow + título */}
           <div>
-            <p class="mb-2 text-sm font-bold tracking-widest text-purple-400 uppercase">
-              ¿Tienes un bote random? 🧴
+            <p class="mb-2 text-sm font-bold tracking-widest text-emerald-400 uppercase">
+              ¡Un éxito rotundo! 🏆
             </p>
             <h2 class="text-4xl font-black leading-tight text-white md:text-5xl">
               El Bote
-              <span class="text-purple-400">Challenge</span>
+              <span class="text-emerald-400">Challenge</span>
             </h2>
             <p class="mt-3 text-lg leading-relaxed text-zinc-300">
-              Trae el bote de agua más random que tengas al gym el{" "}
-              <span class="font-bold text-white">22 de junio</span>.
-              El que más nos sorprenda gana{" "}
-              <span class="font-black text-purple-400">50 % de descuento</span>{" "}
-              en su mensualidad.
+              El reto del <span class="font-bold text-white">22 de junio</span> superó todas las expectativas.
+              La comunidad respondió con toda la creatividad y el ganador se llevó{" "}
+              <span class="font-black text-emerald-400">50 % de descuento</span>{" "}
+              en su mensualidad. ¡Gracias a todos los que participaron!
             </p>
           </div>
 
-          {/* Reglas del concurso */}
+          {/* Resumen de lo que pasó */}
           <ul class="space-y-3">
             {
-              reglas.map((regla) => (
+              logros.map((logro) => (
                 <li class="flex items-start gap-3">
                   <svg
-                    class="mt-0.5 h-4 w-4 shrink-0 text-purple-400"
+                    class="mt-0.5 h-4 w-4 shrink-0 text-emerald-400"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     aria-hidden="true"
@@ -119,28 +109,25 @@ const reglas = [
                       clip-rule="evenodd"
                     />
                   </svg>
-                  <span class="text-sm text-zinc-300">{regla}</span>
+                  <span class="text-sm text-zinc-300">{logro}</span>
                 </li>
               ))
             }
           </ul>
 
-          {/* Countdown hasta el 22 de junio */}
-          <div>
-            <p
-              class="mb-3 text-xs font-semibold tracking-widest text-purple-400 uppercase"
-            >
-              Faltan para el evento
+          {/* Banner de resultado */}
+          <div class="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-5 py-4">
+            <p class="text-sm font-bold text-emerald-300">
+              🎉 ¡El evento fue todo un éxito! Mantente al pendiente de las redes para los próximos retos.
             </p>
-            <CountdownTimer client:load targetDate="2026-06-22T08:00:00" />
           </div>
 
-          {/* CTA */}
+          {/* CTA a redes sociales */}
           <a
             href="/contacto"
-            class="inline-flex w-fit items-center gap-2 rounded-xl bg-purple-500 px-6 py-3.5 text-sm font-black text-white transition-all duration-300 hover:scale-105 hover:bg-purple-400"
+            class="inline-flex w-fit items-center gap-2 rounded-xl bg-emerald-500 px-6 py-3.5 text-sm font-black text-white transition-all duration-300 hover:scale-105 hover:bg-emerald-400"
           >
-            Quiero participar
+            Ver próximos eventos
           </a>
         </div>
       </div>

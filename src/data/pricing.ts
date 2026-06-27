@@ -2,7 +2,7 @@
  * pricing.ts - Centralización de datos de precios y áreas del gimnasio
  */
 
-export type AreaId = "area1" | "area2" | "area3" | "area4";
+export type AreaId = "area1" | "area2" | "area3" | "area4" | "area5";
 
 export interface PricingCard {
   type:
@@ -47,6 +47,11 @@ export const areas: Area[] = [
     id: "area4",
     name: "Promociones Fin de Año",
     gradient: "from-emerald-600/60 via-teal-600/60 to-cyan-600/60",
+  },
+  {
+    id: "area5",
+    name: "Clases de Zumba",
+    gradient: "from-gray-900/50 via-pink-600/60 to-gray-900/50",
   },
 ];
 
@@ -178,6 +183,66 @@ export const pricingData: Record<AreaId, PricingCard[]> = {
         "Clases especializadas",
         "Ambiente seguro",
         "Seguimiento personalizado",
+      ],
+    },
+  ],
+  area5: [
+    {
+      type: "Visita",
+      price: "$30",
+      features: ["Acceso por un día", "Clase de Zumba", "Cupo limitado"],
+    },
+    {
+      type: "Semanal",
+      price: "$120",
+      features: [
+        "Clases incluidas",
+        "Instructor certificado",
+        "Lun–Vie 8am–9am",
+        "Lun–Vie 6:30pm–7:30pm",
+      ],
+    },
+    {
+      type: "Quincenal",
+      price: "$220",
+      features: [
+        "Clases incluidas",
+        "Instructor certificado",
+        "Lun–Vie 8am–9am",
+        "Lun–Vie 6:30pm–7:30pm",
+      ],
+    },
+    {
+      type: "Mensual",
+      price: "$400",
+      featured: true,
+      badge: "Más Popular",
+      features: [
+        "Clases ilimitadas",
+        "Instructor certificado",
+        "Lun–Vie 8am–9am",
+        "Lun–Vie 6:30pm–7:30pm",
+        "Cupo limitado garantizado",
+      ],
+    },
+    {
+      type: "Mensual estudiante",
+      price: "$360",
+      features: [
+        "Clases ilimitadas",
+        "Credencial vigente",
+        "Todos los horarios",
+        "Instructor certificado",
+      ],
+    },
+    {
+      type: "Spinning+Pesas",
+      price: "$700",
+      features: [
+        "Zumba + Área de Pesas",
+        "Acceso completo a ambas áreas",
+        "Todos los horarios disponibles",
+        "Mejor precio combinado",
       ],
     },
   ],

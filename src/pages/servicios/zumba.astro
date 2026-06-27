@@ -1,0 +1,299 @@
+---
+/**
+ * Zumba - Página del servicio
+ *
+ * ESTRUCTURA:
+ * 1. Hero con HeroClipped (imagen de fondo)
+ * 2. Banner sucursal San Antonino
+ * 3. InfoSlider - ¿Por qué tomar Zumba con nosotros?
+ * 4. TrustMetrics - Métricas de confianza
+ * 5. Horarios - ScheduleSection
+ * 6. Precios - PricingPlan
+ * 7. Gallery
+ * 8. CTA Final
+ */
+
+import Layout from "@layouts/Layout.astro";
+import HeroClipped from "@components/sections/HeroClipped.astro";
+import SectionContainer from "@components/layout/SectionContainer.astro";
+import TrustMetrics from "@components/sections/TrustMetrics.astro";
+import InfoSlider from "@components/services/InfoSlider.tsx";
+import Subtitle from "@components/ui/Subtitle.astro";
+import ScheduleSection from "@components/sections/ScheduleSection.astro";
+import PricingPlan from "@components/sections/PricingPlan.astro";
+import ButtonAnimation from "@components/icons/ButtonAnimation.astro";
+import ArrowAnimation from "@components/icons/ArrowAnimation.astro";
+import MobileBottomNav from "@components/layout/MobileBottomNav.tsx";
+import Gallery from "@components/sections/Gallery.astro";
+import ServiceCTA from "@components/sections/ServiceCTA.astro";
+import { zumbaSlides } from "../../data/services";
+import { servicePageNavItems } from "../../data/navigation";
+import { branches } from "../../data/locations";
+import Location from "@components/sections/Location.astro";
+
+const infoSlides = zumbaSlides;
+
+const sanAntonino = branches.find((b) => b.id === "san-antonino")!;
+
+const schedule = [
+  { days: "Lunes a Viernes", hours: "8:00 AM - 9:00 AM" },
+  { days: "Lunes a Viernes", hours: "6:30 PM - 7:30 PM" },
+];
+
+const mobileNavItems = servicePageNavItems;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Clases de Zumba",
+  description:
+    "Clases de Zumba para todos los niveles en San Antonino Castillo Velasco. Baila con música latina, quema hasta 600 calorías por clase y mejora tu cardio con instructor certificado.",
+  image: "https://trasciendegym.com/bento-info/zumba1.jpg",
+  url: "https://trasciendegym.com/servicios/zumba",
+  serviceType: "Clase grupal de Zumba",
+  provider: {
+    "@type": "ExerciseGym",
+    name: "Gym Trasciende — Sucursal San Antonino",
+    url: "https://trasciendegym.com",
+    telephone: "+52-951-498-0492",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Cuauhtémoc 50, 1ra Secc",
+      addressLocality: "San Antonino Castillo Velasco",
+      addressRegion: "Oaxaca",
+      addressCountry: "MX",
+    },
+  },
+  areaServed: [
+    { "@type": "City", name: "San Antonino Castillo Velasco" },
+    { "@type": "City", name: "Ocotlán de Morelos" },
+  ],
+  offers: [
+    {
+      "@type": "Offer",
+      name: "Visita Zumba",
+      price: "30",
+      priceCurrency: "MXN",
+      description: "Acceso por un día a clase de Zumba",
+    },
+    {
+      "@type": "Offer",
+      name: "Semanal Zumba",
+      price: "120",
+      priceCurrency: "MXN",
+    },
+    {
+      "@type": "Offer",
+      name: "Mensualidad Zumba",
+      price: "400",
+      priceCurrency: "MXN",
+      description: "Clases de Zumba ilimitadas por un mes",
+    },
+    {
+      "@type": "Offer",
+      name: "Paquete Zumba + Pesas",
+      price: "700",
+      priceCurrency: "MXN",
+    },
+  ],
+  hoursAvailable: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "09:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "18:30",
+      closes: "19:30",
+    },
+  ],
+};
+---
+
+<Layout
+  title="Zumba en San Antonino | Gym Trasciende — Baila y Quema Calorías"
+  description="Clases de Zumba en San Antonino Castillo Velasco. Baila con música latina, quema hasta 600 calorías y mejora tu cardio. Todos los niveles. ¡Únete hoy!"
+  keywords="clases de zumba san antonino, zumba san antonino castillo velasco, zumba oaxaca, baile fitness oaxaca, clases de baile gym, gym trasciende san antonino, zumba para principiantes, quemar calorias bailando, fitness baile latino, clases grupales san antonino"
+  image="https://trasciendegym.com/bento-info/zumba1.jpg"
+  type="website"
+  schema={schema}
+>
+  <meta
+    slot="head"
+    property="og:image:alt"
+    content="Clases de Zumba en Gym Trasciende San Antonino — baile fitness para todos los niveles"
+  />
+  <meta
+    slot="head"
+    name="twitter:image:alt"
+    content="Clases de Zumba en Gym Trasciende San Antonino — baile fitness para todos los niveles"
+  />
+
+  {/* 1. Hero */}
+  <HeroClipped
+    img="/bento-info/zumba1.jpg"
+    alt="Clases de Zumba en Gym Trasciende San Antonino"
+    minHeight="min-h-screen"
+    overlayOpacity="70"
+  >
+    <div class="mx-auto w-full max-w-7xl px-4">
+      <div class="flex w-full flex-col gap-8">
+        {/* Badge sucursal */}
+        <div class="inline-flex items-center gap-2">
+          <div class="bg-primary h-px w-12"></div>
+          <span
+            class="text-primary text-sm font-semibold tracking-widest uppercase"
+          >
+            Sucursal San Antonino
+          </span>
+        </div>
+
+        {/* Título */}
+        <h1
+          class="text-secondary text-5xl leading-tight font-bold tracking-wide md:text-7xl lg:text-8xl"
+          style="view-transition-name: title-zumba"
+        >
+          Clases de Zumba
+        </h1>
+
+        {/* Subtítulo */}
+        <p class="text-secondary max-w-2xl text-lg leading-relaxed md:text-xl">
+          Baila, quema calorías y diviértete al ritmo de la música latina.
+          Para todos los niveles — sin experiencia previa necesaria.
+        </p>
+
+        {/* CTAs */}
+        <div class="flex flex-col gap-4 sm:flex-row sm:gap-6">
+          <a
+            href="/contacto"
+            class="group border-primary text-primary hover:bg-primary/50 inline-flex items-center justify-center gap-2 rounded-lg border-2 px-5 py-2.5 font-bold transition-all duration-300 hover:scale-105 active:scale-95"
+          >
+            <span class="text-base font-semibold">¡Únete a la clase!</span>
+            <ButtonAnimation
+              width={24}
+              height={24}
+              class="transition-transform group-hover:scale-110"
+            />
+          </a>
+
+          <a
+            href="#horarios"
+            class="group border-secondary text-secondary hover:bg-secondary/50 inline-flex items-center justify-center gap-2 rounded-lg border-2 px-5 py-2.5 font-bold transition-all duration-300 hover:scale-105 active:scale-95"
+          >
+            <span class="text-base font-semibold">Ver horarios</span>
+            <ArrowAnimation class="size-5" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </HeroClipped>
+
+  {/* 2. Banner sucursal San Antonino */}
+  <div class="border-primary/10 border-y bg-zinc-950/90 backdrop-blur-sm">
+    <div class="mx-auto max-w-5xl px-4 py-5">
+      <div
+        class="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-10"
+      >
+        <div class="flex items-center gap-2.5">
+          <div
+            class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-pink-500/10"
+          >
+            <span class="text-sm">📍</span>
+          </div>
+          <p class="text-sm text-zinc-400">
+            Exclusivo{" "}
+            <span class="font-semibold text-white">Sucursal San Antonino</span>
+          </p>
+        </div>
+
+        <div class="hidden h-5 w-px bg-zinc-700 sm:block"></div>
+
+        <div class="flex items-center gap-2.5">
+          <div
+            class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-pink-500/10"
+          >
+            <span class="text-sm">🏠</span>
+          </div>
+          <p class="text-sm text-zinc-400">
+            <span class="font-semibold text-white">{sanAntonino.address}</span>
+          </p>
+        </div>
+
+        <div class="hidden h-5 w-px bg-zinc-700 sm:block"></div>
+
+        <div class="flex items-center gap-2.5">
+          <div
+            class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-pink-500/10"
+          >
+            <span class="text-sm">🕐</span>
+          </div>
+          <p class="text-sm text-zinc-400">
+            L-V <span class="font-semibold text-white">8am · 6:30pm</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* 3. ¿Por Qué Tomar Zumba Con Nosotros? */}
+  <SectionContainer class="py-20 md:py-32">
+    <div class="mx-auto max-w-7xl">
+      <Subtitle>¿Por Qué Tomar Zumba Con Nosotros?</Subtitle>
+      <InfoSlider client:visible slides={infoSlides} />
+    </div>
+  </SectionContainer>
+
+  {/* 4. Métricas de confianza */}
+  <TrustMetrics />
+
+  {/* 5. Horarios */}
+  <SectionContainer id="horarios" class="py-20 md:py-32">
+    <div class="mx-auto max-w-3xl">
+      <Subtitle>Horarios de Clases</Subtitle>
+      <p class="text-secondary mb-8 text-center">
+        Dos horarios diarios para que encuentres el que más te acomoda.
+      </p>
+      <ScheduleSection schedule={schedule} />
+      <div class="mt-6 text-center">
+        <p class="text-sm text-zinc-400">
+          💡 Tip: La clase de la mañana arranca tu día con energía y la de la
+          tarde te desestresa después del trabajo.
+        </p>
+      </div>
+    </div>
+  </SectionContainer>
+
+  {/* 6. Ubicación */}
+  <SectionContainer class="py-20 md:py-28">
+    <div class="mx-auto max-w-4xl">
+      <Subtitle>¿Dónde Encontrarnos?</Subtitle>
+      <Location branchId="san-antonino" />
+    </div>
+  </SectionContainer>
+
+  {/* 7. Precios */}
+  <div id="precios">
+    <PricingPlan allowedAreas={["area5"]} showSelector={false} />
+  </div>
+
+  {/* 8. Galería */}
+  <Gallery />
+
+  {/* 9. CTA Final */}
+  <ServiceCTA
+    heading="Empieza a Bailar Hoy"
+    description="No necesitas experiencia, solo ganas. Únete a la clase de Zumba en San Antonino y descubre el cardio más divertido que existe."
+    ctaLabel="¡Quiero unirme!"
+  />
+
+  {/* Navegación móvil inferior */}
+  <MobileBottomNav
+    client:load
+    items={mobileNavItems}
+    hideOnScroll={false}
+    vibration={true}
+  />
+</Layout>

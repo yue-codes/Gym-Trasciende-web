@@ -10,8 +10,6 @@ import SectionContainer from "@components/layout/SectionContainer.astro";
 import ScheduleSection from "@components/sections/ScheduleSection.astro";
 import ServiceBento from "@components/services/ServiceBento.astro";
 import MobileBottomNav from "@components/layout/MobileBottomNav.tsx";
-import TeaserEventoBote from "@components/sections/TeaserEventoBote.astro";
-import StickyBannerBote from "@components/sections/StickyBannerBote.astro";
 import TeaserDiaPadre from "@components/sections/TeaserDiaPadre.astro";
 
 // Horarios del gimnasio
@@ -61,14 +59,6 @@ const mobileNavItems = [
   description="¿Buscas gimnasio en Ocotlán? En Trasciende Gym te ofrecemos pesas, spinning y nutrición para todo nivel. Abierto desde las 5 am. ¡Empieza tu cambio hoy!"
 >
   <Hero />
-  {
-    /* Sticky bar del Bote Challenge — eliminar esta línea para quitar del home */
-  }
-  <StickyBannerBote />
-  {
-    /* Teaser del Bote Challenge — eliminar esta línea para quitar el banner del home */
-  }
-  <TeaserEventoBote />
   {
     /* Teaser Día del Padre — eliminar esta línea para quitar del home */
   }

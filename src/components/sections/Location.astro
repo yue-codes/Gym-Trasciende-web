@@ -5,9 +5,11 @@ import { branches } from "src/data/locations";
 interface Props {
   class?: string;
   id?: string;
+  branchId?: string;
 }
 
-const { class: className, id } = Astro.props;
+const { class: className, id, branchId } = Astro.props;
+const visibleBranches = branchId ? branches.filter((b) => b.id === branchId) : branches;
 ---
 
 <section
@@ -45,7 +47,7 @@ const { class: className, id } = Astro.props;
 
   <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
     {
-      branches.map((branch) => (
+      visibleBranches.map((branch) => (
         <div class="border-primary/30 overflow-hidden rounded-2xl border bg-gray-900/50 backdrop-blur-sm">
           <!-- Encabezado de la tarjeta -->
           <div class="flex items-center justify-between gap-3 p-5 pb-4">

@@ -136,3 +136,46 @@ export const areaAdultosSlides: InfoSlide[] = [
     image: "/nosotros.jpg",
   },
 ];
+
+export const zumbaSlides: InfoSlide[] = [
+  {
+    title: "Para Todos los Niveles",
+    description: "No necesitas saber bailar — solo ganas de moverte.",
+    items: [
+      "Cero experiencia requerida, solo actitud",
+      "Instructor que adapta el ritmo a todos",
+      "Clase dinámica donde cada quien va a su paso",
+    ],
+    image: "/bento-info/zumba2.jpg",
+  },
+  {
+    title: "Quema Calorías Bailando",
+    description: "El cardio más divertido que vas a encontrar.",
+    items: [
+      "Quema entre 300 y 600 calorías por clase",
+      "Mejora tu resistencia y salud cardiovascular",
+      "Resultados reales sin sentir que estás haciendo ejercicio",
+    ],
+    image: "/bento-info/zumba3.jpg",
+  },
+  {
+    title: "Ritmo, Música y Ambiente",
+    description: "Cada clase es una experiencia que te deja con ganas de más.",
+    items: [
+      "Música latina y urbana que no para",
+      "Grupo motivado que te impulsa cada sesión",
+      "El mejor ambiente para desconectarte del día",
+    ],
+    image: "/bento-info/zumba5.jpg",
+  },
+  {
+    title: "¿Qué Necesito Para Asistir?",
+    description: "Solo lo esencial para bailar sin preocupaciones.",
+    items: [
+      "Ropa deportiva cómoda y transpirable",
+      "Tenis con buena sujeción lateral",
+      "Botella de agua — ¡sí vas a sudar!",
+    ],
+    image: "/bento-info/zumba6.jpg",
+  },
+];
