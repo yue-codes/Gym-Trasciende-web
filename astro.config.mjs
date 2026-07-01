@@ -45,5 +45,6 @@ export default defineConfig({
     platformProxy: {
       enabled: true,
     },
+    prerenderEnvironment: "node",
   }),
 });
