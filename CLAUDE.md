@@ -13,6 +13,11 @@ pnpm astro check  # Type-check the project
 
 Deployment is to Cloudflare Workers via `wrangler.jsonc`. The site is always built as static (`output: "static"`).
 
+**`wrangler.jsonc` gotchas** (Astro 7 / `@astrojs/cloudflare` 14 era, valid as of pnpm's current lockfile):
+- Do **not** add a `main` field. This is an assets-only deployment — no worker code runs. `@cloudflare/vite-plugin` only auto-detects "assets-only" mode (skipping its own file-existence check) when `main` is absent; if `main` is set, it eagerly checks that the file exists *before* Astro has built it, which breaks both `pnpm dev` and `pnpm build`.
+- `assets.directory` must be `./dist/client`, not `./dist`. The Cloudflare adapter splits build output into `dist/client` (the actual static site) and `dist/server` (empty for this static site).
+- `wrangler` must satisfy the peer dependency `@cloudflare/vite-plugin` requires (check with `pnpm build` after any Astro/Cloudflare adapter upgrade — a stale `wrangler` version throws `Unable to load your Astro config`).
+
 ## Architecture
 
 **Stack**: Astro 5 + Tailwind CSS 4 + Preact + Cloudflare adapter
